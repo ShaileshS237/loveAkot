@@ -1,0 +1,75 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="text-align: center;--ion-background-color:rgba(14,42,119,1); color: white;">
+    <ion-title > Add Blood Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="column1">
+        
+           
+            <div class="form-control">
+                <label for='username'>Name</label>
+                <input type="" id="username" style="text-transform: capitalize;" placeholder="Enter Name" [(ngModel)]="Name">
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for='email'>Mobile No.</label>
+                <input  id="email" type="number" placeholder="Enter Mobile No." [(ngModel)]="MobNo">
+                <small>Error message</small>
+            </div>
+            <!-- <div class="form-control">
+              <label for='password'>Blood Group Want</label>  
+          <ion-item style="--background: none;
+    --border-color: white;">
+            <ion-label>Gender</ion-label>
+            <ion-select placeholder="Select One" style="">
+              <ion-select-option value="f">Female</ion-select-option>
+              <ion-select-option value="m">Male</ion-select-option>
+            </ion-select>
+          </ion-item>
+            </div> -->
+            <div class="form-control">
+                <label for='password'>Blood Group Want</label>
+                <select id="cat" name="cat" type="text" [(ngModel)]="Category" >
+                  <option value="A +ve">A +ve</option>
+                  <option value="A -ve">A -ve</option>
+                  <option value="B +ve" >B +ve</option>
+                  <option value="B -ve">B -ve</option>
+                  <option value="AB +ve">AB +ve</option>
+                  <option value="AB -ve" >AB -ve</option>
+                  <option value="O" >O</option>
+                </select>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+              <label for='password'>Emergency?</label>
+              <select id="cat" name="cat" type="text" [(ngModel)]="Urgent" >
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+              <small>Error message</small>
+          </div>
+            <div class="form-control">
+                <label for='address'>Address of Place</label>
+                <input type="text" style="text-transform: capitalize;" id="password2" placeholder="Enter Address, leave blank if not known" [(ngModel)]="address">
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+              <label for='message'>Message</label>
+              <textarea type="text" style="text-transform: capitalize;" type="message" id="password2" placeholder="Message for Donar" [(ngModel)]="message"></textarea>
+              <small>Error message</small>
+          </div>
+            <button [disabled]="!Name || !MobNo || !Category || !address || disabled " (click)="createNews()">Submit</button>
+            
+    </div>
+    
+
+</div>
+<div class="footer">
+  <h1 style="    margin-top: 10px;
+  margin-bottom: 10px; font-size:11px ;padding: 0px 6px 0px 14px;">
+Delete the request when you receive blood from a blood donor. And try to give some gifts to the donor </h1>
+</div>
+</ion-content>

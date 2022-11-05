@@ -1,0 +1,95 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="text-align: center;--ion-background-color:rgba(14,42,119,1); color: white;">
+    <ion-title > Add Blood Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="column1">
+        
+           
+            <div class="form-control">
+                <label for='username'>Doctor Name</label>
+                <input id="username" placeholder="Enter Name" [(ngModel)]="name">
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+              <label for='username'>Doctor Degree</label>
+              <input id="username" placeholder="Enter Degree  " [(ngModel)]="degree">
+              <small>Error message</small>
+          </div>
+          <div class="form-control">
+            <label for='username'>Doctor Fees</label>
+            <input id="username" placeholder="Enter Fees  " [(ngModel)]="fees">
+            <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for='username'>Doctor Exp</label>
+          <input id="username" placeholder="Enter Exp  " [(ngModel)]="exp">
+          <small>Error message</small>
+      </div>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6"> <div class="form-control">
+            <label for='username'>Morning Time</label>
+            <input id="username" placeholder="Enter satrt time" [(ngModel)]="mTime1" >
+            <small>Error message</small>
+        </div></ion-col> To
+          <ion-col size="6"><div class="form-control">
+            <label for='username'>Morning Time</label>
+            <input id="username" placeholder="Enter satrt time" [(ngModel)]="mTime2" >
+            <small>Error message</small>
+        </div></ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="4"> <div class="form-control">
+            <label for='username'>eve Time</label>
+            <input id="username" placeholder="Enter satrt time" [(ngModel)]="eTime1" >
+            <small>Error message</small>
+        </div></ion-col> To
+          <ion-col size="4"><div class="form-control">
+            <label for='username'>eve Time</label>
+            <input id="username" placeholder="Enter satrt time" [(ngModel)]="eTime2" >
+            <small>Error message</small>
+        </div></ion-col>
+        </ion-row>
+      </ion-grid>
+      
+      <div class="form-control">
+        <label for='email'>off</label>
+        <input  id="email" placeholder="off" [(ngModel)]="off">
+        <small>Error message</small>
+    </div>
+            <div class="form-control">
+                <label for='email'>Mobile No.</label>
+                <input  id="email" placeholder="Enter Mobile No." [(ngModel)]="MobNo">
+                <small>Error message</small>
+            </div>
+            
+           
+            <div class="form-control">
+                <label for='address'>Address of clinic</label>
+                <input id="password2" placeholder="Enter Address, leave blank if not known" [(ngModel)]="address">
+                <small>Error message</small>
+            </div>
+            
+            <div class="form-control">
+              <label for='sex'>sex</label>
+              <input id="sex" placeholder="sex" [(ngModel)]="sex">
+              <small>Error message</small>
+          </div>
+            <!-- <div class="form-control">
+              <label for='message'>Message</label>
+              <textarea type="message" id="password2" placeholder="Message" [(ngModel)]="message"></textarea>
+              <small>Error message</small>
+          </div> -->
+            <button (click)="createNews()">Submit</button>
+            
+    </div>
+    
+
+</div>
+</ion-content>

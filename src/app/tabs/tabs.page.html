@@ -1,0 +1,127 @@
+  <!-- <body>
+<div class="tab-container">
+  <div class="tab purple ">
+    <ion-icon name="archive-outline"></ion-icon>
+    <p>Home</p>
+  </div>
+  <div class="tab pink active">
+    <ion-icon name="bag-outline"></ion-icon>
+    <p>Link</p>
+  </div>
+  <div class="tab yellow">
+    <ion-icon name="bar-chart-outline"></ion-icon>
+    <p>Search</p>
+  </div>
+  <div class="tab teal">
+    <ion-icon name="cafe-outline"></ion-icon>
+    <p>Profile</p>
+  </div>
+
+</div>
+
+<script>
+  
+</script>
+</body> -->
+
+
+<ion-tabs  color="success" *ngIf="language=='English'" class="size">  
+
+  
+  <ion-tab-bar slot="bottom" class="tab-container"  selected-tab="" >
+    <ion-tab-button tab="tab-notifications" class="tab" tab="tab3">
+      <ion-icon style="font-size: 23px;
+      padding-top: 7px;" src="./assets/homeicon/news.svg"></ion-icon><span style="margin-top: 3px;">News</span>
+      
+    </ion-tab-button>
+   
+
+    <ion-tab-button tab="tab-encounters" tab="tab5" class="tab"> 
+      <ion-icon style="font-size: 23px;
+      padding-top: 7px;" src="./assets/homeicon/speech-bubble.svg"></ion-icon><span style="margin-top: 3px;">Posts</span>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab-encounters" tab="tab1" class="tab"> 
+      <ion-icon style="font-size: 23px;
+      padding-top: 7px;" src="./assets/homeicon/house.svg"></ion-icon><span style="margin-top: 3px;">Home</span>
+    </ion-tab-button>
+    
+   
+    <ion-tab-button tab="tab-conversations" class="tab" tab="tab2">
+      <ion-icon style="font-size: 23px;
+      padding-top: 7px;" src="./assets/homeicon/app-store.svg"></ion-icon><span style="margin-top: 3px;">Category</span>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab-profile" tab="tab4" class="tab">
+      <ion-icon style="font-size: 23px;
+      padding-top: 7px;" src="./assets/homeicon/calendar.svg"></ion-icon><span style="margin-top: 3px;">Events</span>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
+<ion-tabs color="success"  *ngIf="language=='Marathi'" class="size">  
+
+  
+  <ion-tab-bar slot="bottom" class="tab-container"  selected-tab="">
+    <ion-tab-button tab="tab-notifications" class="tab" tab="tab3" style="">
+      <ion-icon style="font-size: 23px;
+      padding-top: 7px;" src="./assets/homeicon/news.svg"></ion-icon><span style="margin-top: 3px;font-family: 'Mukta', sans-serif;">बातम्या</span>
+      
+    </ion-tab-button>
+   
+
+    <ion-tab-button tab="tab-encounters" tab="tab5" class="tab"> 
+      <ion-icon style="font-size: 23px;
+      padding-top: 7px;" src="./assets/homeicon/speech-bubble.svg"></ion-icon><span style="margin-top: 3px;font-family: 'Mukta', sans-serif;">पोस्ट्स</span>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab-encounters" tab="tab1" class="tab"> 
+      <ion-icon style="font-size: 23px;
+      padding-top: 7px;" src="./assets/homeicon/house.svg"></ion-icon><span style="margin-top: 3px;font-family: 'Mukta', sans-serif;">होम</span>
+    </ion-tab-button>
+    
+   
+    <ion-tab-button tab="tab-conversations" class="tab" tab="tab2">
+      <ion-icon style="font-size: 23px;
+      padding-top: 7px;" src="./assets/homeicon/app-store.svg"></ion-icon><span style="margin-top: 3px;font-family: 'Mukta', sans-serif;">कॅटेगरी</span>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab-profile" tab="tab4" class="tab">
+      <ion-icon style="font-size: 23px;
+      padding-top: 7px;" src="./assets/homeicon/calendar.svg"></ion-icon><span style="margin-top: 3px;font-family: 'Mukta', sans-serif;">कार्यक्रम</span>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
+
+<div class="section full-height" @fade *ngIf="then==='show'" >
+  <div class="modal">		
+    <div class="modal-wrap">	
+      
+      <img src="/assets/welcome.png" alt="" style="    padding: 43px 50px 0;">	
+      <h1 style="margin: 13px 12px 8px;text-align: center; font-weight: 300;">
+        Welcome <br> <span style="font-weight: 800;
+        text-transform: capitalize;
+        font-size: 31px;
+        background: -webkit-linear-gradient(#ff7600, #FFB259);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;"> {{name}}</span>
+      </h1>	   
+      <h2 style="    margin: 0px;
+      font-size: 13px;
+      text-align: center;
+      font-weight: 300;
+  ">Together <span style="color: red;"> "WE" </span> can make Akot Better <br> #GoDigital</h2>   
+     
+      <div style="height: 0.5px;
+      margin: 13px 12px;
+      background: #eaeaea;;">
+
+      </div>	
+    <div style="text-align: right;">
+      <input class="clickBtn" type="button" value="Lets Get Started" (click)="onClick()">
+    </div>
+      <!-- <ion-button style="text-align: center;" color="primary" (click)="onClick()">Primary</ion-button> -->
+    </div>	
+  </div>	
+</div>

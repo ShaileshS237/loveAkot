@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="text-align: center;--ion-background-color:rgba(14,42,119,1); color: white;">
+    <!-- <ion-title > Details of Event</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-button (click)="createEvent()" [disabled]="!EventName || !MobNo || !Startdate  || !openTime  || !address || Disabled  " color="light" slot="end" style="margin-right: 18px;">Add Event <ion-icon name="arrow-forward"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="column1">
+            <div class="form-control">
+                <label for='username'>Blood Donation Camp Name*</label>
+                <input id="eventname" style="text-transform:capitalize" placeholder="Enter Name(Only 40 Character)" [(ngModel)]="EventName" [maxlength]="40">
+            </div>
+            <div class="form-control">
+              <label for='username'>Organizer Contact No.*</label>
+              <input id="mobile" placeholder="Enter Mobile(Leave Blank if Dont Know)" [(ngModel)]="MobNo" Max="10" type="number">
+          </div>
+            <div class="form-control">
+              <label for="dateofbirth">Camp Date*</label>
+              <input type="date" name="dateofbirth" id="dateofbirth" [(ngModel)]="Startdate">
+          </div>
+          <!-- <div class="form-control">
+            <label for="dateofbirth">Camp End Date*</label>
+            <input type="date" name="dateofbirth" id="dateofbirth" [(ngModel)]="endDate">
+        </div> -->
+          <div class="form-control">
+            <label for='email'>Camp Starting Time*</label>
+            <input  id="email" type="time" placeholder="Enter Mobile No." [(ngModel)]="openTime">
+        </div>
+            <!-- <div class="form-control">
+              <label for='email'>Camp Closing Time*</label>
+              <input  id="email" placeholder="Enter Mobile No." type="time" [(ngModel)]="CloseTime">
+          </div> -->
+          <div class="form-control">
+                <label for='address'>Address of Camp*</label>
+                <input id="password2" placeholder="Enter Address" [(ngModel)]="address">
+            </div>
+           
+            <div class="form-control">
+              <label for='message'>About Camp(Detail)*</label>
+              <textarea type="message" id="password2" placeholder="Say something about event " [(ngModel)]="about"></textarea>
+          </div>
+          <div class="form-control">
+            <label for='message'>Banner Image of Camp</label>
+            <input type="file" (change)="upload($event)" accept="*.png.jpg" id="">
+            <h6 style="    font-size: 8px;margin: 4px;">*if no banner image available, Leave Blank</h6>
+        </div>
+            <!-- <button >Add Event</button> -->
+            
+    </div>
+    
+
+</div>
+</ion-content>

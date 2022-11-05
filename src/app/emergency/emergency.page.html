@@ -1,0 +1,130 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  <div *ngIf="lang=='English'">
+    <div style="padding: 0 20px 20px 20px;">
+      <h1>Hey There.</h1>
+      <h2>We're here To Help You in Emergency Situation</h2>
+      <h1 style="margin: 5px 0 0 0; font-size:12px;color: #999999;font-weight: 400;">
+        If you have any emergecy conatct no. like Police Persons, Ambulance, Sarpa mitra, Fire Brigade,MSEB etc please send us on iloveakot@gmail.com. or Whatsapp us @8793851682
+      </h1>
+      <div style="height: 71px; background: linear-gradient(
+        241deg
+        , #0042d6, #003b65);; border-radius: 10px; margin: 10px 0 0 0; overflow: hidden;">
+        <!-- <img style="    z-index: 0;max-width: 27%;opacity: 25%;transform: rotate(-13deg);" src="/assets/emergency/image (11).png" /> -->
+          <div style=" ">
+              <ion-grid style="padding: 5px;">
+                <ion-row>
+                  <ion-col size="9">
+                    <h3 style="color: white;line-height: 19px; font-weight: 700  ;font-size: 17px; margin: 4px 0px 0px 15px; ;">Panic Mode <br>(GOI Helpline 112)
+                     <!-- <br> <span style="
+                     font-size: 7px;
+                     font-weight: 200;
+                     line-height: 2px;">"An initiative of Govt. of India under the Nirbhaya funds scheme for ensuring safety of women and children</span> -->
+                    </h3>
+                  </ion-col>
+                  <ion-col>
+                    <div (click)="presentAlertConfirm(112)"
+                      style="background-color: #0e2a77;height: 50px; width: 50px; margin: auto;  /* width: 50%; */ /* border: 3px solid green; */padding: 13px;border-radius: 37px;justify-items: center">
+                      <!-- <ion-icon name="call"></ion-icon> -->
+                      <ion-icon name="call"  style="height: 25px;width: 25px; color: white;" ></ion-icon>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+          </div>
+      </div>
+      <div *ngFor="let noList of noLists">
+          <div style="height: 71px; background: linear-gradient(
+            241deg
+            , #0042d6, #003b65);; border-radius: 10px; margin: 10px 0 0 0; overflow: hidden;">
+            <!-- <img style="    z-index: 0;max-width: 27%;opacity: 25%;transform: rotate(-13deg);" src="{{noList.Link}}" /> -->
+              <div style="   ">
+                  <ion-grid style="padding: 5px;">
+                    <ion-row>
+                      <ion-col size="9">
+                        <h3 style="color: white; font-weight: 700  ;font-size: 19px; margin: 12px 0px 0px 15px; ;">{{noList.title}}
+                        </h3>
+                      </ion-col>
+                      <ion-col>
+                        <div (click)="presentAlertConfirm(noList.No)"
+                          style="background-color: #0e2a77;height: 50px; width: 50px; margin: auto;  /* width: 50%; */ /* border: 3px solid green; */padding: 13px;border-radius: 37px;justify-items: center">
+                          <!-- <ion-icon name="call"></ion-icon> -->
+                          <ion-icon name="call"  style="height: 25px;width: 25px; color: white;" ></ion-icon>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+              </div>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="lang=='Marathi'" class="marathi">
+    <div style="padding: 0 20px 20px 20px;">
+      <h1>नमस्कार.</h1>
+      <h2>आपत्कालीन परिस्थितीत आपली मदत करण्यासाठी आम्ही येथे आहोत</h2>
+      <h1 style="margin: 5px 0 0 0; font-size:12px;color: #999999;font-weight: 400;">
+        आपल्याकडे काही पोलिस व्यक्ती, रुग्णवाहिका, सर्पमित्र, अग्निशमन दल, एमएसईबी इत्यादी लोकांचे मोबाईल क्र. असतील तर कृपया आम्हाला iloveakot@gmail.com वर पाठवा. किंवा आम्हाला व्हॉट्सअॅप @ 8793851682 करा
+      </h1>
+      <div style="height: 71px; background: linear-gradient(
+        241deg
+        , #0042d6, #003b65);; border-radius: 10px; margin: 10px 0 0 0; overflow: hidden;">
+        <!-- <img style="    z-index: 0;max-width: 27%;opacity: 25%;transform: rotate(-13deg);" src="/assets/emergency/image (11).png" /> -->
+          <div style=" ">
+              <ion-grid style="padding: 5px;">
+                <ion-row>
+                  <ion-col size="9">
+                    <h3 style="color: white;line-height: 19px; font-weight: 700  ;font-size: 17px; margin: 4px 0px 0px 15px; ;">पॅनीक मोड <br>(GOI हेल्पलाइन 112)
+                     <!-- <br> <span style="
+                     font-size: 7px;
+                     font-weight: 200;
+                     line-height: 2px;">"An initiative of Govt. of India under the Nirbhaya funds scheme for ensuring safety of women and children</span> -->
+                    </h3>
+                  </ion-col>
+                  <ion-col>
+                    <div (click)="presentAlertConfirm(112)"
+                      style="background-color: #0e2a77;height: 50px; width: 50px; margin: auto;  /* width: 50%; */ /* border: 3px solid green; */padding: 13px;border-radius: 37px;justify-items: center">
+                      <!-- <ion-icon name="call"></ion-icon> -->
+                      <ion-icon name="call"  style="height: 25px;width: 25px; color: white;" ></ion-icon>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+          </div>
+      </div>
+      <div *ngFor="let noList of noLists">
+          <div style="height: 71px; background: linear-gradient(
+            241deg
+            , #0042d6, #003b65);; border-radius: 10px; margin: 10px 0 0 0; overflow: hidden;">
+            <!-- <img style="    z-index: 0;max-width: 27%;opacity: 25%;transform: rotate(-13deg);" src="{{noList.Link}}" /> -->
+              <div style="   ">
+                  <ion-grid style="padding: 5px;">
+                    <ion-row>
+                      <ion-col size="9">
+                        <h3 style="color: white; font-weight: 700  ;font-size: 19px; margin: 12px 0px 0px 15px; ;">{{noList.titleM}}
+                        </h3>
+                      </ion-col>
+                      <ion-col>
+                        <div (click)="presentAlertConfirm(noList.No)"
+                          style="background-color: #0e2a77;height: 50px; width: 50px; margin: auto;  /* width: 50%; */ /* border: 3px solid green; */padding: 13px;border-radius: 37px;justify-items: center">
+                          <!-- <ion-icon name="call"></ion-icon> -->
+                          <ion-icon name="call"  style="height: 25px;width: 25px; color: white;" ></ion-icon>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+              </div>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+</ion-content>

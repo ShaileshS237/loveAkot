@@ -1,0 +1,622 @@
+
+<ion-router-outlet id="main"></ion-router-outlet>
+<ion-header class="ion-no-border" style="color: white; " >
+  <ion-toolbar id="new-background-color" style="color: white; ">
+    <ion-buttons slot="start">
+      <ion-button (click)="onClick()">
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
+      <ion-button (click)="onClickend()" style="height: 51px;">
+        <ion-icon name="notifications-outline" ></ion-icon>
+        <div class="blob"></div>
+      </ion-button>
+    </ion-buttons> -->
+    <!-- <img src="assets\icon\logo_white.png" height="24px"> -->
+
+  </ion-toolbar>
+  
+  <div >
+  
+    <div style="height: 85px; display:block;  width:100%;overflow:scroll;
+  background: linear-gradient(360deg, rgba(2,0,79,1) 0%, rgba(14,42,119,1) 100%)" >
+    <div style=" padding-top: 0px;
+      padding-left: 31px;
+      padding-right: 0px;">
+  
+      <h1 *ngIf="language !== 'Marathi'">
+        <span style="color:white;font-weight: 700;font-size: 33.9px">Explore Akot !<br> </span>
+      </h1>
+      <h1 *ngIf="language == 'Marathi'">
+        <span style="color:white;font-weight: 700;font-size: 33.9px;font-family: 'Mukta', sans-serif;">आकोट एक्सप्लोर करा!<br> </span>
+      </h1>
+      <h1 class="tw" style="font-weight: 300;">
+        <span style="color:white;font-weight: 700;" *ngIf="language !== 'Marathi'"> Find </span>
+        <span style="color:white;font-weight: 700;" *ngIf="language == 'Marathi'"> शोधा </span>
+      </h1>
+      
+    </div>
+   
+    
+    </div>
+  </div>
+    
+ 
+</ion-header>
+
+<ion-content style=" min-height: 0px;" >
+ <div *ngIf="language != 'Marathi'">
+   
+  <div style=" background: rgba(2,0,79,1);padding: 0px 13px 12px 13px;" *ngIf="showError">
+    <div  style="height: 50%;;overflow: hidden;background-color: #040f2ddb;border-radius: 7px  ;margin-bottom: 0px; " class="weather">
+      <ion-grid > 
+        <ion-row>
+          <ion-col style="margin:1px 0 0 18px;" size="3">
+            <img src="/assets/wifiIcon.png" class="rotate" alt="" style="color: white;" style=" width: 100% !important;
+            height: auto !important;"><br>
+          
+  
+          </ion-col>
+          <ion-col style="    padding-right: 15px;">
+            <h1 style="font-size: 17px;"> No Internet Connection Detected </h1>
+            <h2 style="font-weight: 400;
+            color: white;    padding-top: 9px;
+            font-size: 12px;
+            text-align: end;
+            margin-top : 0px;
+            font-family: 'Montserrat', sans-serif;">Please, Turn On Mobile Internet  <br>  or Wifi</h2>
+          </ion-col>
+         
+        </ion-row>
+      </ion-grid>
+     
+    </div>
+  </div>
+  
+  <div style=" background: rgba(2,0,79,1);padding: 0px 13px 12px 13px;" *ngIf="!showError">
+  
+    <div  style="height:100px;overflow: hidden;background-color: #040f2ddb;border-radius: 7px  ;margin-bottom: 0px; " class="weather" *ngIf="this.temp">
+      <!-- <h1 style="margin-top: 10px;
+      font-size: 16px;
+      padding-left: 20px; color:white;text-align: center;">Good Morning Shailesh</h1> -->
+      <ion-grid > 
+        <ion-row>
+          <ion-col style="margin:1px 0 0 18px;" size="3">
+            <img src={{this.icon}} class="rotate" alt="" style="color: white;" style=" width: 100% !important;
+            height: auto !important;"><br>
+          
+  
+          </ion-col>
+          <ion-col style="    padding-right: 15px;" >
+            <h1> {{this.temp}} </h1>
+            <h2 style="font-weight: 400;
+            color: white;
+            font-size: 17px;
+            text-align: end;
+            margin-top : 0px;
+            font-family: 'Montserrat', sans-serif;">Feels Like {{ temp2 }}</h2>
+          </ion-col>
+         
+        </ion-row>
+      </ion-grid>
+     
+    </div>
+  </div>
+
+  <!-- <div style="
+margin-left: 20px;
+margin-right: 20px;height: 22px;
+">
+<div style="height: 75px;background-color: white;margin: 13px;border-radius: 7px;margin-bottom: 0px; position: relative;
+top: -50px;">
+ <h1> {{this.temp}}</h1>
+</div>
+   
+  </div> -->
+ <div style="padding:9px 14px 0px">
+  <h1 style="
+  font-weight: 200; font-size: 24px;">
+    {{greet}}👋
+  </h1 >
+  <h1 style="font-weight: 800;font-size: 30px;color: #030d32; padding-top: 4px;">
+    {{ name | titlecase}} 
+  </h1>
+  
+ </div>
+  <div    style="    padding:10px 10px 0px 10px">
+    <div>
+    <ion-slides mode="md" pager="md" [options]="slideOpts" >
+      <ion-slide  *ngFor="let item of images" >
+        <div>
+          <img src={{item.image}} alt="" style="border-radius: 6px;" (click)="infoCon(item.image)">
+        </div>
+      </ion-slide>
+     
+    </ion-slides>
+    </div>
+  </div>
+  
+ 
+  <!-- <div >
+    <h1 style="">
+        <span style="font-weight: 300;font-size: 14px ;padding-left: 14px;
+        padding-bottom: 3px;"> Current Weather in Akot<br> </span>
+     </h1>
+</div> -->
+
+<!-- <div class="blob2"></div> -->
+
+<div style="">
+    <ion-grid>
+      <h1 style="padding-bottom: 3px; 
+      margin-top: -10px;">
+        <span style="font-weight: 300;font-size: 14px ;padding-left: 8px;
+        padding-bottom: 12px;"> Covid19 Situation in Akola<br> </span>
+      </h1>
+     <div [routerLink]="['/covid']" routerLinkActive="router-link-active"  style="margin: 0 5px;">
+      <img src="  /assets/covidVaccineFinder.png" alt="" style="    border-radius: 4px;">
+     </div>
+     
+
+
+      <ion-row>
+        <ion-col>
+
+          <div style=" height: 72px; border-radius: 7px ;padding-left: 5px; border: 1px solid orange;">
+            <h1>
+              <span style="background: -webkit-linear-gradient(#ff7600, #FFB259);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;font-weight: 400;font-size: 15px;
+            padding-left: 8px"> Total <br> </span>
+            </h1>
+            <h1>
+              <span style="background: -webkit-linear-gradient(#ff7600, #FFB259);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;font-weight: 700;font-size: 24px;
+            padding-left: 8px;"> {{ c }} </span>
+            <!-- <span style="font-size: 14px;color: #ff7600;">({{cc}})</span> -->
+            </h1>
+          </div>
+        </ion-col>
+        <ion-col>
+
+          <div style=" height: 72px; border-radius: 7px ;padding-left: 5px; border: 1px solid red;">
+            <h1>
+              <span style="background: -webkit-linear-gradient(196deg,#9b0707, #FF5959);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;font-weight: 400;font-size: 15px;
+            padding-left: 8px"> Death <br> </span>
+            </h1>
+            <h1>
+              <span style="background: -webkit-linear-gradient(196deg,#9b0707, #FF5959);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;font-weight: 700;font-size: 24px;
+            padding-left: 8px;"> {{ d }} </span>
+             <!-- <span style="font-size: 14px;color: #b31b1b;">({{dd}})</span> -->
+            </h1>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+
+          <div style=" height: 72px; border-radius: 7px ;padding-left: 5px; border: 1px solid green;">
+            <h1>
+              <span style="background: -webkit-linear-gradient(#4CD97B, #60a778);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;font-weight: 400;font-size: 15px;
+            padding-left: 8px"> Recovered <br> </span>
+            </h1>
+            <h1>
+              <span style="background: -webkit-linear-gradient(#4CD97B, #60a778);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;font-weight: 700;font-size: 24px;
+            padding-left: 8px;"> {{ r }} </span>
+            <!-- <span style="font-size: 14px;color: #4CD97B;">({{rr}})</span> -->
+            </h1>
+          </div>
+        </ion-col>
+        <ion-col>
+
+          <div style=" height: 72px; border-radius: 7px ;padding-left: 5px; border: 1px solid #1d608e;">
+            <h1>
+              <span style="background: -webkit-linear-gradient(#4cb5ff, #1d608e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;font-weight: 400;font-size: 15px;
+            padding-left: 8px"> Active <br> </span>
+            </h1>
+            <h1>
+              <span style="background: -webkit-linear-gradient(#4cb5ff, #1d608e);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;font-weight: 700;font-size: 24px;
+            padding-left: 8px;"> {{ a }} </span>
+            </h1>
+          </div>
+        
+        </ion-col>
+     
+      </ion-row>
+     
+    </ion-grid>
+  </div>
+  <div>
+    <h1 style="animation: scroll 7s linear 0s infinite;
+    text-align: center;
+      font-weight: 400;
+      font-size: 15px;background: -webkit-linear-gradient( 
+214deg
+ ,#0037e5, #ff5151);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;">
+     Please Wear Mask,
+     Stay Home, Stay Safe!
+    </h1 >
+  
+    
+  </div>
+ 
+  <div style="    background: #f2f2f2;
+  margin-top: 10px;">
+    <ion-grid>
+      <ion-row>
+        <ion-col (click)="disabled()">
+          <img src="/assets/blood.jpg" alt="" style="border-radius: 6px;">
+         </ion-col>
+         <ion-col [routerLink]="['/emergency']" >
+          <img src="/assets/eme2.jpg" alt="" style="border-radius: 6px;">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+   
+  </div>
+
+ <h1 style="font-size: 16px;
+   padding-left: 3.5%;
+   font-weight: 300;
+   color: #888888;    margin: 8px 0; ">Quick Access</h1>
+   <div *ngIf="!stopLoading" style="    align-items: center;
+   text-align: center;
+   margin-top: 44%;">
+     <ion-spinner  name="dots" ></ion-spinner>
+   </div>
+ 
+   <ion-slides mode="md" [options]="slideOpts2" >
+     <ion-slide *ngFor="let data of category">
+      <ion-grid style="text-align:center;" class="ion-no-padding"  >
+        <ion-row >
+          <ion-col >
+            <div (click)="navigate(data.id,data.title)" style=" max-height: 95px;   margin: 5px;    border: 1px solid #d1d1d1; min-height: 95px;;
+            ;border-radius: 9px; ">
+            <div style="
+            color: white; display: flex;
+      justify-content: center;
+      align-items: center;">
+              <img style=" max-width: 60px;min-width: 60px;
+              max-height: 100%; padding: 13px 13px 0px 13px;" src="{{data.img}}" alt="">
+           
+          </div>
+          <h1 style="   padding: 6px 5px 13px 5px;;font-size: 10px; ">{{data.title | titlecase}} </h1>
+        </div> 
+          </ion-col>
+        </ion-row>
+        </ion-grid>
+       
+     </ion-slide>
+   <ion-slide *ngIf="stopLoading">
+    <div [routerLink]="['/tabs/tab2']" routerLinkActive="router-link-active"  style=" max-height: 95px;   margin: 5px;     min-height: 95px;;
+            ;border-radius: 9px; ">
+            <div style="
+            color: black; display: flex;
+      justify-content: center;
+      align-items: center;">
+      <ion-icon name="arrow-forward-outline" style=" max-width: 60px;min-width: 60px;
+      max-height: 100%; padding: 37px 0;" ></ion-icon>
+            
+          </div>
+        
+        </div> 
+  </ion-slide>
+   </ion-slides>
+
+  <div style="padding: 10px 10px; " (click)="shareApp()">
+    <img src="/assets/shareApp.jpg" alt="" style="border-radius: 5px;">
+  </div>
+
+ </div>  
+
+ <div *ngIf="language == 'Marathi'">
+  <div style=" background: rgba(2,0,79,1);padding: 0px 13px 12px 13px;" *ngIf="showError">
+    <div  style="height: 50%;;overflow: hidden;background-color: #040f2ddb;border-radius: 7px  ;margin-bottom: 0px; " class="weather">
+      <ion-grid > 
+        <ion-row>
+          <ion-col style="margin:1px 0 0 18px;" size="3">
+            <img src="/assets/wifiIcon.png" class="rotate" alt="" style="color: white;" style=" width: 100% !important;
+            height: auto !important;"><br>
+          
+  
+          </ion-col>
+          <ion-col style="    padding-right: 15px;">
+            <h1 style="font-size: 17px;font-family: 'Mukta', sans-serif;font-weight: 800;"> कोणतेही इंटरनेट कनेक्शन आढळले नाही </h1>
+            <h2 style="font-weight: 400;
+            color: white;    padding-top: 9px;
+            font-size: 12px;
+            text-align: end;
+            margin-top : 0px;
+            font-family: 'Montserrat', sans-serif;font-family: 'Mukta', sans-serif;font-weight: 500;">कृपया, मोबाइल इंटरनेट <br> किंवा वायफाय चालू करा</h2>
+          </ion-col>
+         
+        </ion-row>
+      </ion-grid>
+     
+    </div>
+  </div>
+  
+  <div style=" background: rgba(2,0,79,1);padding: 0px 13px 12px 13px;" *ngIf="!showError">
+  
+    <div  style="height:100px;overflow: hidden;background-color: #040f2ddb;border-radius: 7px  ;margin-bottom: 0px; " class="weather" *ngIf="this.temp">
+      <!-- <h1 style="margin-top: 10px;
+      font-size: 16px;
+      padding-left: 20px; color:white;text-align: center;">Good Morning Shailesh</h1> -->
+      <ion-grid > 
+        <ion-row>
+          <ion-col style="margin:1px 0 0 18px;" size="3">
+            <img src={{this.icon}} class="rotate" alt="" style="color: white;" style=" width: 100% !important;
+            height: auto !important;"><br>
+          
+  
+          </ion-col>
+          <ion-col style="    padding-right: 15px;" >
+            <h1> {{this.temp}} </h1>
+            <h2 style="font-weight: 400;
+            color: white;
+            font-size: 17px;
+            text-align: end;
+            margin-top : 0px;
+            font-family: 'Montserrat', sans-serif;font-family: 'Mukta', sans-serif;font-weight: 800;">असे वाटते {{ temp2 }}</h2>
+          </ion-col>
+         
+        </ion-row>
+      </ion-grid>
+     
+    </div>
+  </div>
+
+  <!-- <div style="
+margin-left: 20px;
+margin-right: 20px;height: 22px;
+">
+<div style="height: 75px;background-color: white;margin: 13px;border-radius: 7px;margin-bottom: 0px; position: relative;
+top: -50px;">
+ <h1> {{this.temp}}</h1>
+</div>
+   
+  </div> -->
+ <div style="padding:9px 14px 0px">
+ 
+  <h1 style="
+  font-weight: 200; font-size: 24px;font-family: 'Mukta', sans-serif;font-weight: 800;">
+    {{greet}}👋
+  </h1 >
+  <h1 style="font-weight: 800;font-size: 30px;color: #030d32; padding-top: 4px;">
+    {{ name | titlecase}} 
+  </h1>
+  
+ </div>
+ <!-- <marquee width="100%" direction="left" height="30%" style="font-family: 'Mukta';">
+  आपल्या शहरात आले आहे एक जेवण 
+</marquee> -->
+  <div    style="    padding:0px 10px 0px 10px">
+    <div>
+    <ion-slides mode="md" pager="md" [options]="slideOpts" >
+      <ion-slide  *ngFor="let item of images" >
+        <div>
+          <img src={{item.image}} alt="" style="border-radius: 6px;" (click)="infoCon(item.image)">
+          
+        </div>
+      </ion-slide>
+     
+    </ion-slides>
+    </div>
+  </div>
+  
+ 
+  <!-- <div >
+    <h1 style="">
+        <span style="font-weight: 300;font-size: 14px ;padding-left: 14px;
+        padding-bottom: 3px;"> Current Weather in Akot<br> </span>
+     </h1>
+</div> -->
+
+<!-- <div class="blob2"></div> -->
+<div style="">
+  
+    <ion-grid>
+      <h1 style="padding-bottom: 3px; 
+      margin-top: -10px;
+  ">
+        <span style="font-weight: 300;font-size: 14px ;padding-left: 8px;
+        padding-bottom: 12px;font-family: 'Mukta', sans-serif;font-weight: 800;">अकोल्यातील कोविड१९ ची परिस्थिती<br> </span>
+      </h1>
+      <div [routerLink]="['/covid']" routerLinkActive="router-link-active"  style="margin: 0 5px;">
+        <img src="/assets/covidFinderMarathi.png" alt="" style="    border-radius: 4px;">
+       </div>
+      <!-- <div>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="2"><img src="/assets/mask.png" alt="" style="width: 50px;"></ion-col>
+            <ion-col size="10"><h1>Wear Mask and Break The Chain</h1></ion-col>
+          </ion-row>
+        </ion-grid>
+        
+      </div> -->
+      <ion-row>
+        <ion-col>
+
+          <div style=" height: 72px; border-radius: 7px ;padding-left: 5px; border: 1px solid orange;">
+            <h1>
+              <span style="background: -webkit-linear-gradient(#ff7600, #FFB259);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;font-weight: 400;font-size: 15px;
+            padding-left: 8px;font-family: 'Mukta', sans-serif;"> पूर्ण <br> </span>
+            </h1>
+            <h1>
+              <span style="background: -webkit-linear-gradient(#ff7600, #FFB259);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;font-weight: 700;font-size: 24px;
+            padding-left: 8px;"> {{ c }} </span>
+            <!-- <span style="font-size: 14px;color: #ff7600;">({{cc}})</span> -->
+            </h1>
+          </div>
+        </ion-col>
+        <ion-col>
+
+          <div style=" height: 72px; border-radius: 7px ;padding-left: 5px; border: 1px solid red;">
+            <h1>
+              <span style="background: -webkit-linear-gradient(196deg,#9b0707, #FF5959);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;font-weight: 400;font-size: 15px;
+            padding-left: 8px;font-family: 'Mukta', sans-serif;"> मृत्यू <br> </span>
+            </h1>
+            <h1>
+              <span style="background: -webkit-linear-gradient(196deg,#9b0707, #FF5959);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;font-weight: 700;font-size: 24px;
+            padding-left: 8px;"> {{ d }} </span>
+             <!-- <span style="font-size: 14px;color: #b31b1b;">({{dd}})</span> -->
+            </h1>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+
+          <div style=" height: 72px; border-radius: 7px ;padding-left: 5px; border: 1px solid green;">
+            <h1>
+              <span style="background: -webkit-linear-gradient(#4CD97B, #60a778);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;font-weight: 400;font-size: 15px;
+            padding-left: 8px;font-family: 'Mukta', sans-serif;"> बरे झाले <br> </span>
+            </h1>
+            <h1>
+              <span style="background: -webkit-linear-gradient(#4CD97B, #60a778);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;font-weight: 700;font-size: 24px;
+            padding-left: 8px;"> {{ r }} </span>
+            <!-- <span style="font-size: 14px;color: #4CD97B;">({{rr}})</span> -->
+            </h1>
+          </div>
+        </ion-col>
+        <ion-col>
+
+          <div style=" height: 72px; border-radius: 7px ;padding-left: 5px; border: 1px solid #1d608e;">
+            <h1>
+              <span style="background: -webkit-linear-gradient(#4cb5ff, #1d608e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;font-weight: 400;font-size: 15px;
+            padding-left: 8px;font-family: 'Mukta', sans-serif;"> सक्रिय <br> </span>
+            </h1>
+            <h1>
+              <span style="background: -webkit-linear-gradient(#4cb5ff, #1d608e);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;font-weight: 700;font-size: 24px;
+            padding-left: 8px;"> {{ a }} </span>
+            </h1>
+          </div>
+        
+        </ion-col>
+     
+      </ion-row>
+     
+    </ion-grid>
+  </div>
+  <div>
+    <h1 style="animation: scroll 7s linear 0s infinite;
+    text-align: center;
+      font-weight: 400;
+      font-size: 15px;background: -webkit-linear-gradient( 
+214deg
+ ,#0037e5, #ff5151);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;font-family: 'Mukta', sans-serif;">
+    कृपया मास्क घाला,
+    घरी रहा, सुरक्षित रहा!
+    </h1 >
+  
+    
+  </div>
+ 
+  <div style="    background: #f2f2f2;
+  margin-top: 10px;">
+    <ion-grid>
+      <ion-row>
+        <ion-col (click)="disabled()">
+          <img src="/assets/bloodM.jpg" alt="" style="border-radius: 6px;">
+         </ion-col>
+         <ion-col [routerLink]="['/emergency']" >
+          <img src="/assets/eme2m.jpg" alt="" style="border-radius: 6px;">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+   
+  </div>
+
+ <h1 style="font-size: 16px;
+   padding-left: 3.5%;
+   font-weight: 300;
+   color: #888888;    margin: 8px 0; font-family: 'Mukta', sans-serif;">जलद प्रवेश</h1>
+   <div *ngIf="!stopLoading" style="    align-items: center;
+   text-align: center;
+   margin-top: 44%;">
+     <ion-spinner  name="dots" ></ion-spinner>
+   </div>
+ 
+   <ion-slides mode="md" [options]="slideOpts2" >
+     <ion-slide *ngFor="let data of category">
+      <ion-grid style="text-align:center;" class="ion-no-padding"  >
+        <ion-row >
+          <ion-col >
+            <div (click)="navigate(data.id,data.title,data.titleM)" style=" max-height: 95px;   margin: 5px;    border: 1px solid #d1d1d1; min-height: 95px;;
+            ;border-radius: 9px; ">
+            <div style="
+            color: white; display: flex;
+      justify-content: center;
+      align-items: center;">
+              <img style=" max-width: 60px;min-width: 60px;
+              max-height: 100%; padding: 13px 13px 0px 13px;" src="{{data.img}}" alt="">
+           
+          </div>
+          <h1 style="   padding: 6px 5px 13px 5px;;font-size: 12px;font-family: 'Mukta', sans-serif; ">{{data.titleM}} </h1>
+        </div> 
+          </ion-col>
+        </ion-row>
+        </ion-grid>
+       
+     </ion-slide>
+   <ion-slide *ngIf="stopLoading">
+    <div [routerLink]="['/tabs/tab2']" routerLinkActive="router-link-active"  style=" max-height: 95px;   margin: 5px;     min-height: 95px;;
+            ;border-radius: 9px; ">
+            <div style="
+            color: black; display: flex;
+      justify-content: center;
+      align-items: center;">
+      <ion-icon name="arrow-forward-outline" style=" max-width: 60px;min-width: 60px;
+      max-height: 100%; padding: 37px 0;" ></ion-icon>
+            
+          </div>
+        
+        </div> 
+  </ion-slide>
+   </ion-slides>
+
+  <div style="padding: 10px 10px; " (click)="shareApp()">
+    <img src="/assets/shareAppM.png" alt="" style="border-radius: 5px;">
+  </div>
+ </div>
+
+
+
+
+
+
+</ion-content>

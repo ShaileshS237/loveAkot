@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <div style="padding:0 20px;">
+      <h1 style="    margin: 9px 0;">Find Your Desired Doctor</h1>
+      <!-- <ion-searchbar placeholder="Search For Doctors" style="padding:0px"></ion-searchbar> -->
+      <h5>Categories</h5>
+      <div style="height: 77px; background-color:#0c1329  ;border-radius: 5px;     margin: 6px 0px 6px 0px;" *ngFor="let docType of docTypes">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3" >
+              <div style="background-color:#ffffff; height: 53px;
+              width: 53px;border-radius: 5px;" >
+                  <img style="padding: 10px;" src="{{docType.src}}" alt="">
+              </div>
+            </ion-col>
+            <ion-col style="padding-left: 0px;" (click)="navigate(docType.id,docType.title,docType.img)">
+             <span style="font-size: 21px;font-weight: 700;position: relative;top: 14px;color: white;">{{docType.title}}</span><br>
+             
+            </ion-col>
+          </ion-row>
+        </ion-grid>  
+      </div>
+      
+  </div>
+  
+</ion-content>

@@ -1,0 +1,48 @@
+.blob {
+	background: black;
+	//border-radius: 50%;
+	margin: 10px;
+    height: 6px;
+    width: 7px;
+  background-color: #fa3e3e;
+  border-radius: 10px;
+  color: white;
+ 
+  padding: 3px 3px;
+  font-size: 10px;
+  
+  position: absolute; /* Position the badge within the relatively positioned button */
+  top: 1px;
+  right:  99px;
+  ;  
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(194, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1.1);
+		box-shadow: 0 0 0 10px rgba(201, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(175, 0, 0, 0);
+	}
+}
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;	
+	background-color: #f7f7f7;
+	color: #0e2a77;
+	text-align: center;
+	height: 84px;
+ }

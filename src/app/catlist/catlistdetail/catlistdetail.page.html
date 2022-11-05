@@ -1,0 +1,498 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    
+    <ion-buttons slot="end" style="padding: 12px;    margin-right: 4px;" class="ion-activatable ripple-parent" (click)="presentActionSheet()">
+      <ion-icon name="ellipsis-vertical"></ion-icon>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="language=='English'">
+    <div>
+      <div>
+    
+      <div class="image" style="height: auto;    max-height: 206px;overflow: hidden;  ">
+        <img src={{imageId}} alt="" (click)="openPhoto(imageId)" style="    border-radius: 6px;">
+      </div>
+    
+      <div class="info">
+          <h1>
+            {{CName | titlecase}}
+          </h1>
+          <h2 style="margin: 0px;">
+            {{cat}}
+          </h2>
+        
+          <ion-grid class="ion-no-padding" > 
+            <ion-row class="ion-no-padding">
+              <ion-col size="3" style="    padding: 8px 8px 7px 0;" >
+                <div (click)="doyouWant(Mobile)" style="background-color:#1E1E3F; height: 40px; width: 100%;    border-radius: 6px; color: white;    padding: 9px;">
+                  <ion-icon name="call" style="    width: 100%;
+                  height: 100%;" ></ion-icon>
+                </div>
+              </ion-col>
+   
+             
+            </ion-row>
+            </ion-grid>
+      </div>
+    </div>
+  
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700;    font-size: 14px;
+      font-weight: 300;
+     margin: 0px;    padding-top: 11px;">
+      Working Hours
+    </h2>
+    <div style="height: auto;      background-color: #2712d3;    margin-top: 8px;   margin: 4px 16px;    border-radius: 5px; ">
+      <h1 style="      width: 92%;  font-size: 13px;padding: 12px 19px;;margin: 0px; color: white;font-weight: 700;">{{StartTime}} <span *ngIf="StartTime!='Not Available'">To {{EndTime}}</span> </h1>
+  </div>
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700;
+      font-size: 9px;    margin: 4px 0;
+      font-weight: 300;    ">
+     *Working Hours May Be Differ
+    </h2>
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700;    font-size: 14px;
+      font-weight: 300;
+     margin: 0px;    padding-top: 11px;">
+      Closed on 
+    </h2>
+    <div style="height: auto;      background-color: #2712d3;    margin-top: 8px;   margin: 4px 16px;    border-radius: 5px; ">
+      <h1 style="      width: 92%;  font-size: 13px;padding: 12px 19px;;margin: 0px; color: white;font-weight: 700;">{{off}}  </h1>
+  </div>
+  
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700; font-size: 14px;
+      font-weight: 300;
+        margin: 0px;    padding-top: 11px;">
+      Address
+    </h2>
+    <div style="height: auto;    background-color: #2712d3;    margin-top: 8px;   margin: 4px 16px;    border-radius: 5px;   ">
+      <h1 style="      width: 92%;  font-size: 13px;padding: 12px 19px;;margin: 0px; color: white;font-weight: 700;">  {{Address |titlecase}}</h1>
+  </div>
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700; font-size: 14px;
+      font-weight: 300;
+        margin: 0px;    padding-top: 11px;">
+      About
+    </h2>
+    <div style="height: auto;    background-color: #2712d3;    margin-top: 8px;       margin: 4px 16px;    border-radius: 5px;  ">
+      <h1 style="      width: 92%;  font-size: 13px;padding: 12px 19px;;margin: 0px; color: white;font-weight: 700;white-space: pre-line;">  {{About}}</h1>
+  </div>
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700;    font-size: 14px;
+      font-weight: 300;
+      margin: 0px;    padding-top: 11px;">
+      Mobile No.
+    </h2>
+    <div style="height: auto;    background-color: #2712d3;    margin-top: 8px; font-weight: 700;  margin: 4px 16px;    border-radius: 5px;     ">
+      <h1 style="      width: 92%;  font-size: 13px;padding:12px 19px;;margin: 0px; color: white;font-weight: 700;">{{this.Mobile}}</h1>
+  </div>
+  <hr style="background-color: #cdcdcd;    height: 0.5px;">
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700;
+      font-size: 14px;
+      font-weight: 300;     margin: 0px;   ">
+      Rate This {{cat}}
+    </h2>
+    <ion-grid style="    padding: 0 31px 0 31px;">
+  
+      <ion-row >
+        <ion-col class="emoji" (click)="addClass(id=1,'/assets/1.png')" [ngClass]="{'active': id === 1 }" id="1"   >
+          <img style="padding: 7px;" src="/assets/1.png" alt="">
+        </ion-col>
+        <ion-col class="emoji" (click)="addClass(id=2,'/assets/2.png')" [ngClass]="{'active': id === 2 }" id="2" >
+          <img style="padding: 7px;" src="/assets/2.png" alt="">
+        </ion-col>
+        <ion-col class="emoji" (click)="addClass(id=3,'/assets/3.png')" [ngClass]="{'active': id === 3 }" id="3" >
+          <img style="padding: 7px;" src="/assets/3.png" alt="">
+        </ion-col>
+        <ion-col class="emoji" (click)="addClass(id=4,'/assets/4.png')" [ngClass]="{'active': id === 4 }" id="4" >
+          <img style="padding: 7px;" src="/assets/4.png" alt="">
+         
+        </ion-col>
+        <ion-col class="emoji" (click)="addClass(id=5,'/assets/5.png')" [ngClass]="{'active': id === 5 }" id="5" >
+          <img style="padding: 7px;" src="/assets/5.png" alt="">
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+      <div *ngIf="yesReview" @fade style="    margin: 1px 20px;">
+        <input  [(ngModel)]="Name" type="name" name="" id="" placeholder="Your Name(Leave Blank, if want to keep secret)" style="text-transform: capitalize; font-size: 13px;
+        padding: 10px;
+        border: none;
+        max-width: 100%;
+        width: 659px;
+        border: 0.5px solid #c7c7c7;
+        border-radius: 6px;
+        margin: 0 0 13px 0;
+        ">
+        <textarea (click)="clear()" name="" id="" cols="30" rows="10" placeholder="Write Something" style="font-size: 13px;
+        padding: 10px;
+        height: 128px;    border: 0.5px solid #c7c7c7;
+        min-height: 128px;
+        max-width: 100%;
+        width: 659px;
+        border-radius: 6px;
+        margin: 0px;
+        max-height: 128px;" [(ngModel)]="Review"></textarea>
+         <h2 *ngIf="error2" style="margin: 0px 4px;
+         color: red;
+         font-size: 10px;
+         font-weight: 300;" id="error"> *Please Say Something</h2>
+       <ion-grid >
+         <ion-row>
+           <ion-col size="6" class=".revieText">
+             <input class="revieText" type="button" [disabled]="!Review || clicked === 1" value="Submit" (click)="createReview()" style="    border: none;
+             width: 102%;
+             color: white;
+             border-radius: 53px;
+             
+             padding: 10px;">
+           </ion-col>
+           <ion-col size="6">
+            <input type="button" value="Not Now" (click)="notNow()" style="    border: none;
+            width: 102%;
+            color: black;
+            border-radius: 53px;
+            background: #dcdcdc;
+            padding: 10px;">
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+      </div>
+      <hr style="background-color: #cdcdcd;    height: 0.5px;">
+    </div>
+      <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 300;
+    font-size: 14px;  margin: 0px;    padding-top: 11px;">
+     Ratings & Reviews
+    </h2>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="5" style="text-align: center;    padding: 6% 8%;">
+          <h1 style="    margin: 0px;
+          font-weight: 800;
+          font-size: 43px;
+      ">{{total | slice:0:3}}</h1>
+          <h2 style="    font-weight: 300;
+          margin: 0px;
+          font-size: 15px;">Out of 5</h2>
+          <span style="font-size: 13px;"> Total Reviews: {{count}} </span>
+        </ion-col>
+        <ion-col size="7">
+          <div>
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="1">5</ion-col>
+                <ion-col size="11"> <ion-progress-bar value={{five}} style="margin: 7px 0;" color="success"></ion-progress-bar></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1">4</ion-col>
+                <ion-col size="11"> <ion-progress-bar value={{four}} style="margin: 7px 0;" color="warning"></ion-progress-bar></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1">3</ion-col>
+                <ion-col size="11"> <ion-progress-bar value={{three}} style="margin: 7px 0;" color="tertiary"></ion-progress-bar></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1">2</ion-col>
+                <ion-col size="11"> <ion-progress-bar value={{two}} style="margin: 7px 0;"></ion-progress-bar></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1">1</ion-col>
+                <ion-col size="11"> <ion-progress-bar value={{one}} style="margin: 7px 0;" color="danger"></ion-progress-bar></ion-col>
+              </ion-row>
+            </ion-grid>
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div style="height: auto; background-color: #f7f7f7;    border-radius: 8px;    margin: 15px;" *ngFor="let item of review">
+       <ion-grid >
+         <ion-row>
+        
+           <ion-col size="9"> <h1 style="    font-weight: 800;
+            margin: 0px;
+            padding-left: 11px;font-size: 15px;">{{item.Name | titlecase}}</h1>
+          <h2 style="    padding-left: 11px;
+          font-size: 12px;font-weight: 300;
+          margin: 0px;">{{item.Date | timeago  }}</h2>  
+          </ion-col>
+           <ion-col size="3"><img style="    padding: 0 11px 0 11px;
+            max-width: 71%;float: right;
+        " src={{item.emoji}} alt=""></ion-col>
+         </ion-row>
+         <hr style="background-color: #e1e1e1;    margin: 0.5px;">
+         <ion-row>
+           <ion-col size="12">
+             
+             <p style="margin: 1px;
+            padding: 0px 11px;
+            font-size: 15px;">{{item.Review}}</p></ion-col>
+         </ion-row>
+       </ion-grid>
+    </div> 
+  </div>
+
+  <div  *ngIf="language=='Marathi'" class="Marathi">
+    <div>
+      <div>
+    
+      <div class="image" style="height: auto;    max-height: 206px;overflow: hidden;  ">
+        <img src={{imageId}} alt="" (click)="openPhoto(imageId)" style="    border-radius: 6px;">
+      </div>
+    
+      <div class="info">
+          <h1>
+            {{CName | titlecase}}
+          </h1>
+          <h2 style="margin: 0px;">
+            {{CatM}}
+          </h2>
+        
+          <ion-grid class="ion-no-padding" > 
+            <ion-row class="ion-no-padding">
+              <ion-col size="3" style="    padding: 8px 8px 7px 0;" >
+                <div (click)="doyouWant(Mobile)" style="background-color:#1E1E3F; height: 40px; width: 100%;    border-radius: 6px; color: white;    padding: 9px;">
+                  <ion-icon name="call" style="    width: 100%;
+                  height: 100%;" ></ion-icon>
+                </div>
+              </ion-col>
+   
+             
+            </ion-row>
+            </ion-grid>
+      </div>
+    </div>
+  
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700;    font-size: 14px;
+      font-weight: 300;
+     margin: 0px;    padding-top: 11px;">
+      कामाचे तास
+    </h2>
+    <div style="height: auto;      background-color: #2712d3;    margin-top: 8px;   margin: 4px 16px;    border-radius: 5px; ">
+      <h1 style="      width: 92%;  font-size: 13px;padding: 12px 19px;;margin: 0px; color: white;font-weight: 700;">{{StartTime}} <span *ngIf="StartTime!='Not Available'">To {{EndTime}}</span> </h1>
+  </div>
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700;
+      font-size: 9px;    margin: 4px 0;
+      font-weight: 300;    ">
+     *कामाचे तास भिन्न असू शकतात
+    </h2>
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700;    font-size: 14px;
+      font-weight: 300;
+     margin: 0px;    padding-top: 11px;">
+      बंद
+    </h2>
+    <div style="height: auto;      background-color: #2712d3;    margin-top: 8px;   margin: 4px 16px;    border-radius: 5px; ">
+      <h1 style="      width: 92%;  font-size: 13px;padding: 12px 19px;;margin: 0px; color: white;font-weight: 700;">{{off}}  </h1>
+  </div>
+  
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700; font-size: 14px;
+      font-weight: 300;
+        margin: 0px;    padding-top: 11px;">
+      पत्ता
+    </h2>
+    <div style="height: auto;    background-color: #2712d3;    margin-top: 8px;   margin: 4px 16px;    border-radius: 5px;   ">
+      <h1 style="      width: 92%;  font-size: 13px;padding: 12px 19px;;margin: 0px; color: white;font-weight: 700;">  {{Address |titlecase}}</h1>
+  </div>
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700; font-size: 14px;
+      font-weight: 300;
+        margin: 0px;    padding-top: 11px;">
+      बद्दल
+    </h2>
+    <div style="height: auto;    background-color: #2712d3;    margin-top: 8px;       margin: 4px 16px;    border-radius: 5px;  ">
+      <h1 style="      width: 92%;  font-size: 13px;padding: 12px 19px;;margin: 0px; color: white;font-weight: 700;white-space: pre-line;">  {{About}}</h1>
+  </div>
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700;    font-size: 14px;
+      font-weight: 300;
+      margin: 0px;    padding-top: 11px;">
+    मोबाईल क्रमांक
+    </h2>
+    <div style="height: auto;    background-color: #2712d3;    margin-top: 8px; font-weight: 700;  margin: 4px 16px;    border-radius: 5px;     ">
+      <h1 style="      width: 92%;  font-size: 13px;padding:12px 19px;;margin: 0px; color: white;font-weight: 700;">{{this.Mobile}}</h1>
+  </div>
+  <hr style="background-color: #cdcdcd;    height: 0.5px;">
+  <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 700;
+      font-size: 14px;
+      font-weight: 300;     margin: 0px;   ">
+      {{catM}} यास रेट करा
+    </h2>
+    <ion-grid style="    padding: 0 31px 0 31px;">
+  
+      <ion-row >
+        <ion-col class="emoji" (click)="addClass(id=1,'/assets/1.png')" [ngClass]="{'active': id === 1 }" id="1"   >
+          <img style="padding: 7px;" src="/assets/1.png" alt="">
+        </ion-col>
+        <ion-col class="emoji" (click)="addClass(id=2,'/assets/2.png')" [ngClass]="{'active': id === 2 }" id="2" >
+          <img style="padding: 7px;" src="/assets/2.png" alt="">
+        </ion-col>
+        <ion-col class="emoji" (click)="addClass(id=3,'/assets/3.png')" [ngClass]="{'active': id === 3 }" id="3" >
+          <img style="padding: 7px;" src="/assets/3.png" alt="">
+        </ion-col>
+        <ion-col class="emoji" (click)="addClass(id=4,'/assets/4.png')" [ngClass]="{'active': id === 4 }" id="4" >
+          <img style="padding: 7px;" src="/assets/4.png" alt="">
+         
+        </ion-col>
+        <ion-col class="emoji" (click)="addClass(id=5,'/assets/5.png')" [ngClass]="{'active': id === 5 }" id="5" >
+          <img style="padding: 7px;" src="/assets/5.png" alt="">
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+      <div *ngIf="yesReview" @fade style="    margin: 1px 20px;">
+        <input  [(ngModel)]="Name" type="name" name="" id="" placeholder="Your Name(Leave Blank, if want to keep secret)" style="text-transform: capitalize; font-size: 13px;
+        padding: 10px;
+        border: none;
+        max-width: 100%;
+        width: 659px;
+        border: 0.5px solid #c7c7c7;
+        border-radius: 6px;
+        margin: 0 0 13px 0;
+        ">
+        <textarea (click)="clear()" name="" id="" cols="30" rows="10" placeholder="काहीतरी लिहा" style="font-size: 13px;
+        padding: 10px;
+        height: 128px;    border: 0.5px solid #c7c7c7;
+        min-height: 128px;
+        max-width: 100%;
+        width: 659px;
+        border-radius: 6px;
+        margin: 0px;
+        max-height: 128px;" [(ngModel)]="Review"></textarea>
+         <h2 *ngIf="error2" style="margin: 0px 4px;
+         color: red;
+         font-size: 10px;
+         font-weight: 300;" id="error"> *Please Say Something</h2>
+       <ion-grid >
+         <ion-row>
+           <ion-col size="6" class=".revieText">
+             <input class="revieText" type="button" [disabled]="!Review || clicked === 1" value="आढावा द्या" (click)="createReview()" style="    border: none;
+             width: 102%;
+             color: white;
+             border-radius: 53px;
+             
+             padding: 10px;">
+           </ion-col>
+           <ion-col size="6">
+            <input type="button" value=" आता नाही" (click)="notNow()" style="    border: none;
+            width: 102%;
+            color: black;
+            border-radius: 53px;
+            background: #dcdcdc;
+            padding: 10px;">
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+      </div>
+      <hr style="background-color: #cdcdcd;    height: 0.5px;">
+    </div>
+      <h2 style="padding-left: 20px;
+    /* margin-top: 23px; */
+    font-weight: 300;
+    font-size: 14px;  margin: 0px;    padding-top: 11px;">
+     Ratings & Reviews
+    </h2>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="5" style="text-align: center;    padding: 6% 8%;">
+          <h1 style="    margin: 0px;
+          font-weight: 800;
+          font-size: 43px;
+      ">{{total | slice:0:3}}</h1>
+          <h2 style="    font-weight: 300;
+          margin: 0px;
+          font-size: 15px;">Out of 5</h2>
+          <span style="font-size: 13px;"> Total Reviews: {{count}} </span>
+        </ion-col>
+        <ion-col size="7">
+          <div>
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="1">5</ion-col>
+                <ion-col size="11"> <ion-progress-bar value={{five}} style="margin: 7px 0;" color="success"></ion-progress-bar></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1">4</ion-col>
+                <ion-col size="11"> <ion-progress-bar value={{four}} style="margin: 7px 0;" color="warning"></ion-progress-bar></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1">3</ion-col>
+                <ion-col size="11"> <ion-progress-bar value={{three}} style="margin: 7px 0;" color="tertiary"></ion-progress-bar></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1">2</ion-col>
+                <ion-col size="11"> <ion-progress-bar value={{two}} style="margin: 7px 0;"></ion-progress-bar></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="1">1</ion-col>
+                <ion-col size="11"> <ion-progress-bar value={{one}} style="margin: 7px 0;" color="danger"></ion-progress-bar></ion-col>
+              </ion-row>
+            </ion-grid>
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div style="height: auto; background-color: #f7f7f7;    border-radius: 8px;    margin: 15px;" *ngFor="let item of review">
+       <ion-grid >
+         <ion-row>
+        
+           <ion-col size="9"> <h1 style="    font-weight: 800;
+            margin: 0px;
+            padding-left: 11px;font-size: 15px;">{{item.Name | titlecase}}</h1>
+          <h2 style="    padding-left: 11px;
+          font-size: 12px;font-weight: 300;
+          margin: 0px;">{{item.Date | timeago  }}</h2>  
+          </ion-col>
+           <ion-col size="3"><img style="    padding: 0 11px 0 11px;
+            max-width: 71%;float: right;
+        " src={{item.emoji}} alt=""></ion-col>
+         </ion-row>
+         <hr style="background-color: #e1e1e1;    margin: 0.5px;">
+         <ion-row>
+           <ion-col size="12">
+             
+             <p style="margin: 1px;
+            padding: 0px 11px;
+            font-size: 15px;">{{item.Review}}</p></ion-col>
+         </ion-row>
+       </ion-grid>
+    </div> 
+  </div>
+  <!-- <div class="footer">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6">
+      </ion-col>
+      <ion-col size="6"></ion-col>
+    </ion-row>
+  </ion-grid>
+</div> -->
+
+</ion-content>

@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.loveakot",
+               "sha256_cert_fingerprints": ["F5:8A:A7:02:8C:91:97:BD:E9:B9:C8:BE:A6:D3:69:DD:C9:96:8E:36:16:43:04:50:95:89:4C:DD:04:56:FC:92"] }
+}]

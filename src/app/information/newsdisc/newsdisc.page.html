@@ -1,0 +1,160 @@
+<ion-header class="ion-no-border" >
+  <ion-toolbar style="    border-radius: 0 0 31px 31px; max-height: 238px;" > 
+     
+    <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+    <ion-chip *ngIf="language == 'Marathi'" slot="end" style="margin: 3px 0px;font-size: 12px;margin-right: 11px;" color="success" (click)="share()">
+      <ion-label>शेअर</ion-label>
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </ion-chip>
+    <ion-chip *ngIf="language == 'English'" slot="end" style="margin: 3px 0px;font-size: 12px;margin-right: 11px;" color="success" (click)="share()">
+      <ion-label>Share</ion-label>
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </ion-chip>
+    
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="language == 'English'">
+    <div style="    padding: 0px 5% 5% 5%;">
+      <div>
+      
+        <h1 style="margin-top: 0px; ;font-weight: 700;font-size: 18px;user-select: text;    margin-bottom: 4px;    font-family: 'Mukta';">{{title}}<br> </h1>
+          <ion-title style="font-size: 13px; padding:0px;margin-top: 2px;    font-family: 'Mukta';">   Posted By : {{ContName |titlecase}} </ion-title>
+          <div>
+            <img  src="/assets/newsB.jpg" alt="" *ngIf="loading" style="border-radius: 7px;margin-top: 8px;;" >
+            <div  [hidden]="loading" style="border-radius: 7px;
+            height: 163px;   min-height: 163px;max-height: 163px;
+            overflow: hidden;">
+              <img    (load)="onLoad()" src={{image}} alt="" style="
+           
+          border-radius: 7px;margin-top: 8px;" >
+            </div>
+          </div>
+          <div>
+            
+    
+          </div>
+          <ion-grid style="    padding: 5px 0px 1px">
+            <ion-row class="ion-no-padding">
+              <ion-col size="6" class="ion-no-padding">
+                <ion-chip outline style="margin: 3px 0px;font-size: 12px;" color="dark">
+                  <!-- <ion-icon name="eye-outline"></ion-icon> -->
+                  <ion-label> {{date | date : 'MMMM d, y'}} | {{date | date : 'h:mm a'}}</ion-label>
+                </ion-chip>
+              </ion-col>
+              <ion-col  class="ion-no-padding" style="text-align: right;    margin-right: 5px;">
+                <ion-chip  style="margin: 3px 0px;font-size: 12px;" color="danger">
+                  <ion-icon name="eye-outline"></ion-icon>
+                  <ion-label>{{count}}</ion-label>
+                </ion-chip>
+              
+            
+               
+              
+              </ion-col>
+              <!-- <ion-col  class="ion-no-padding" style="text-align: right;">
+               
+
+                <ion-chip  style="margin: 3px 0px;font-size: 12px;" color="success" (click)="share()">
+                  <ion-label>शेअर</ion-label>
+                  <ion-icon name="logo-whatsapp"></ion-icon>
+                </ion-chip>
+               
+              
+              </ion-col> -->
+
+              <!-- <ion-col style="text-align: right;">
+                <span style="position: absolute;
+                font-weight: 400;
+                font-size: 12px;
+                top: 21%;
+                left: 37%;
+            "> {{count}} </span>
+              </ion-col>  -->
+            </ion-row>  
+          </ion-grid>
+        
+        </div>
+        <h1 style="    white-space: pre-line; user-select: text;font-size: 15px;font-weight: 400; text-align: justify;
+        margin: 7px 0;line-height: 1.4;    font-family: 'Mukta';
+    "> आकोट : {{disc}}</h1>
+       </div>
+  </div>
+
+
+  <div *ngIf="language == 'Marathi'">
+    <div style="    padding: 0px 5% 5% 5%;">
+      <div>
+        <h1 style="margin-top: 0px; ;font-weight: 700;font-size: 18px;user-select: text;    margin-bottom: 4px;font-family: 'Mukta', sans-serif;">{{title}}<br> </h1>
+          <ion-title style="font-size: 13px; padding:0px;margin-top: 2px;font-family: 'Mukta', sans-serif;">    पोस्ट बाय : {{ContName |titlecase}}  </ion-title>
+          <div>
+            <img  src="/assets/newsB.jpg" alt="" *ngIf="loading" style="border-radius: 7px;margin-top: 8px;box-shadow: 1px 4px 32px -18px rgb(0 0 0 / 87%);" >
+            <div  [hidden]="loading" style="border-radius: 7px;
+            height: 163px;   min-height: 163px;max-height: 163px;
+            overflow: hidden;">
+              <img    (load)="onLoad()" src={{image}} alt="" style="
+           
+          border-radius: 7px;margin-top: 8px;box-shadow: 1px 4px 32px -18px rgb(0 0 0 / 87%);" >
+            </div>
+          </div>
+          <div>
+            
+    
+          </div>
+          <ion-grid style="    padding: 5px 0px 1px">
+            <ion-row class="ion-no-padding">
+              <ion-col size="6" class="ion-no-padding">
+                <ion-chip outline style="margin: 3px 0px;font-size: 12px;" color="dark">
+                  <!-- <ion-icon name="eye-outline"></ion-icon> -->
+                  <ion-label> {{date | date : 'MMMM d, y'}} | {{date | date : 'h:mm a'}}</ion-label>
+                </ion-chip>
+              </ion-col>
+              <ion-col  class="ion-no-padding" style="text-align: right;    margin-right: 5px;">
+                <ion-chip  style="margin: 3px 0px;font-size: 12px;" color="danger">
+                  <ion-icon name="eye-outline"></ion-icon>
+                  <ion-label>{{count}}</ion-label>
+                </ion-chip>
+              
+            
+               
+              
+              </ion-col>
+              <!-- <ion-col  class="ion-no-padding" style="text-align: right;">
+               
+
+                <ion-chip  style="margin: 3px 0px;font-size: 12px;" color="success" (click)="share()">
+                  <ion-label>शेअर</ion-label>
+                  <ion-icon name="logo-whatsapp"></ion-icon>
+                </ion-chip>
+               
+              
+              </ion-col> -->
+
+              <!-- <ion-col style="text-align: right;">
+                <span style="position: absolute;
+                font-weight: 400;
+                font-size: 12px;
+                top: 21%;
+                left: 37%;
+            "> {{count}} </span>
+              </ion-col>  -->
+            </ion-row>  
+          </ion-grid>
+        
+        </div>
+        <h1 style="     white-space: pre-line;user-select: text;font-size: 15px;font-weight: 400; text-align: justify;
+        margin: 7px 0;line-height: 1.4;font-family: 'Mukta', sans-serif;
+    "> आकोट : {{disc}}</h1>
+       </div>
+  </div>
+
+   
+</ion-content>
+<!-- <ion-footer>
+  <ion-toolbar>
+    
+  </ion-toolbar>
+</ion-footer> -->

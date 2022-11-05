@@ -1,0 +1,194 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="">
+    
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ <div *ngIf="language =='English'">
+  <ion-grid fixed style="padding: 0 7px;" *ngIf="imageInfo ==='yes'">
+    <ion-row>
+      <ion-col size="6"><img src="/assets/downloadenglish.jpg" style="border-radius: 4px;" alt="" (click)="download(1)"></ion-col>
+      <ion-col size="6"><img src="/assets/downloadmarathi.jpg" style="border-radius: 4px;" alt="" (click)="download(2)"></ion-col>
+    </ion-row>
+  </ion-grid>
+  <div style=" 
+background: #0042d6;
+padding: 14px;margin: 0 11px;
+    border-radius: 8px;">
+<h1 style="color: white;
+margin-top: 0px; font-size: 21px;    font-size: 21px;
+line-height: 24px;
+    letter-spacing: 0px;"><span style="font-weight: 700;">Frequently </span> Ask Questions</h1>
+  <ul>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>1. What is "LoveAkot" ?</h2>
+    <p>LoveAkot is a Local searching app that will help citizens to find essential and emergency details across the city.  This mobile application easily detects the status of the required services by categories such as hospital, medical, carpenters, plumbers, salon, beauty parlor, bus or car, etc. </p>
+  </li>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>2. How "LoveAkot" will help me?</h2>
+    <p>"LoveAkot" app has a database directly updated from the local supplier or verified contributor. This will help you to find the latest information and status of the required services. It also provides news, event, and announcement by the government or authorized person for the city    
+    </p>
+  </li>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>3. Who can use this? is registration required?</h2>
+    <p>All the citizens of the Akot or people related to the city can use this application. You can use this application just by installing it from the play store. No registration is needed to use LoveAkot.</p>
+  </li>
+  <li>
+    <input type="checkbox" checked> 
+    <i></i>
+    <h2>4. Who can add information?</h2>
+    <p>The person, who has the correct information about the particular event or service, can add it to the application. Information is to help citizens of the Akot. It is requested to add genuine data.</p>
+  </li>
+  <!-- <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>5. Is the information in this app genuine? </h2>
+    <p>As the most of the infromation is updated by people like you the chance that the information is 99% correct, until the people do not put wrong information </p>
+  </li> -->
+  <!-- <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>5. Will this app collected my information .</h2>
+    <p>While donating blood, you not only lose weight but it also helps in reducing stress. Stress is one of the reasons that triggers premature ageing. Blood donation helps in reducing stress on your mind and body. Also, keeps the skin tight and wrinkle-free.</p>
+  </li> -->
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>5. Why should I add information?</h2>
+    <p>It will make you happy and satisfied, because of you; citizens and people around have received instant help. Giving also connects us with others; this is creating stronger communities and helping to build a happier society for everyone. </p>
+  </li>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>6. What is the motivation of this app? </h2>
+    <p>The motivation behind the development of LoveAkot application is to build a simple, easily accessible, and information provider platform for the citizens of Akot.  We want to help the citizens of Akot in all possible ways.</p>
+  </li>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>7. Is this app safe?</h2>
+    <p>LoveAkot application is 100% safe. It won’t ask you for more mobile permissions. The app asks for only two permissions, Call Permission and Gallery Permission for making calls from the application and for viewing the images respectively. You can deny the permissions by updating the settings of the mobile.</p>
+  </li>
+  <!-- <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>10. is this app earn money from it.</h2>
+    <p>No </p>
+  </li> -->
+  
+</ul>
+
+</div>
+<div style="margin: 17px;">
+  <button style="    padding: 19px;
+width: 100%;
+background: none;
+border-radius: 5px;
+border: 3px solid #0042d6;" (click)="route(10)" >
+  Didn't find your query? Message Us.
+</button>
+</div>
+ </div>
+ <div  *ngIf="language =='Marathi'">
+  <ion-grid fixed style="padding: 0 7px;" *ngIf="imageInfo ==='yes'">
+    <ion-row>
+      <ion-col size="6"><img src="/assets/downloadenglish.jpg" style="border-radius: 4px;" alt="" (click)="download(1)"></ion-col>
+      <ion-col size="6"><img src="/assets/downloadmarathi.jpg" style="border-radius: 4px;" alt="" (click)="download(2)"></ion-col>
+    </ion-row>
+  </ion-grid>
+  <div style=" 
+background: #0042d6;
+padding: 14px;margin: 0 11px;
+    border-radius: 8px;">
+<h1 style="color: white;font-family: 'Mukta';
+margin-top: 0px; font-size: 21px;    font-size: 21px;
+line-height: 24px;
+    letter-spacing: 0px;"><span style="font-weight: 700;font-family: 'Mukta';">वारंवार  </span> विचारलेले प्रश्न</h1>
+  <ul class="marathi">
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>1. "LoveAkot" काय आहे?</h2>
+    <p>LoveAkot एक स्थानिक शोध अ‍ॅप आहे जे नागरिकांना शहरभरातील आवश्यक आणि आपत्कालीन तपशील शोधण्यात मदत करेल. हा मोबाइल अनुप्रयोग रुग्णालय, वैद्यकीय, सुतार, प्लंबर, सलून, ब्युटी पार्लर, बस किंवा कार इत्यादी विभागांनी आवश्यक सेवांची स्थिती सहजपणे ओळखतो.</p>
+  </li>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>2. "LoveAkot" मला कशी मदत करेल?</h2>
+    <p>"लव्हएकोट" अ‍ॅप मध्ये स्थानिक पुरवठादार किंवा सत्यापित योगदानकर्त्याकडून थेट डेटाबेस अद्यतनित केला जातो. हे आपल्याला आवश्यक सेवांची नवीनतम माहिती आणि स्थिती शोधण्यात मदत करेल. हे सरकारकडून किंवा शहरासाठी अधिकृत व्यक्तीकडून बातम्या, कार्यक्रम आणि घोषणा देखील प्रदान करते    
+    </p>
+  </li>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>3. हे कोण वापरू शकेल? नोंदणी आवश्यक आहे का?</h2>
+    <p>अकोटमधील सर्व नागरिक किंवा शहराशी संबंधित लोक हा अनुप्रयोग वापरू शकतात. आपण हा अनुप्रयोग फक्त स्टोअर वरून स्थापित करुन वापरू शकता. लवएकोट वापरण्यासाठी नोंदणीची आवश्यकता नाही.</p>
+  </li>
+  <li>
+    <input type="checkbox" checked> 
+    <i></i>
+    <h2>4. कोण माहिती जोडू शकेल?</h2>
+    <p>विशिष्ट घटनेची किंवा सेवेबद्दल अचूक माहिती असणारी व्यक्ती, अनुप्रयोगात ती जोडू शकते. अकोटमधील नागरिकांना मदत करणे ही माहिती आहे. अस्सल डेटा जोडण्याची विनंती केली जाते.</p>
+  </li>
+  <!-- <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>5. Is the information in this app genuine? </h2>
+    <p>As the most of the infromation is updated by people like you the chance that the information is 99% correct, until the people do not put wrong information </p>
+  </li> -->
+  <!-- <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>5. Will this app collected my information .</h2>
+    <p>While donating blood, you not only lose weight but it also helps in reducing stress. Stress is one of the reasons that triggers premature ageing. Blood donation helps in reducing stress on your mind and body. Also, keeps the skin tight and wrinkle-free.</p>
+  </li> -->
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>5. मी माहिती का जोडावी?</h2>
+    <p>हे तुमच्यामुळे तुम्हाला सुखी आणि समाधानी करेल; नागरिक आणि आसपासच्या लोकांना त्वरित मदत मिळाली आहे. देणे आपल्याला इतरांशीही जोडते; हे मजबूत समुदाय तयार करीत आहे आणि प्रत्येकासाठी एक आनंदी समाज तयार करण्यात मदत करीत आहे.</p>
+  </li>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>6. या अ‍ॅपची प्रेरणा काय आहे? </h2>
+    <p>अकोटमधील नागरिकांसाठी एक सोपा, सहज उपलब्ध व माहिती पुरवणारा व्यासपीठ तयार करणे हे लवआकोट अनुप्रयोगाच्या विकासामागील प्रेरणा आहे. आम्हाला अकोटमधील नागरिकांना सर्व शक्य मार्गाने मदत करायची आहे.</p>
+  </li>
+  <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>7. 
+      हा अ‍ॅप सुरक्षित आहे का?</h2>
+    <p>LoveAkot अनुप्रयोग 100% सुरक्षित आहे. हे आपल्‍याला अधिक मोबाइल परवानग्या विचारणार नाही. अ‍ॅपमधून केवळ दोन परवानग्या, कॉल परवानग्या आणि गॅलरी परवानगीसाठी अनुप्रयोगाद्वारे कॉल करण्यासाठी आणि अनुक्रमे प्रतिमा पाहण्याची विचारणा केली जाते. आपण मोबाइलच्या सेटिंग्ज अद्यतनित करुन परवानग्या नाकारू शकता.</p>
+  </li>
+  <!-- <li>
+    <input type="checkbox" checked>
+    <i></i>
+    <h2>10. is this app earn money from it.</h2>
+    <p>No </p>
+  </li> -->
+  
+</ul>
+
+</div>
+<div style="margin: 17px;">
+  <button style="    padding: 19px;
+width: 100%;
+background: none;
+border-radius: 5px;
+border: 3px solid #0042d6;" (click)="route(10)" >
+ आपली क्वेरी सापडली नाही? आम्हाला संदेश द्या.
+</button>
+</div>
+ </div>
+
+</ion-content>

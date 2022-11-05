@@ -1,0 +1,124 @@
+
+
+<ion-content>
+  <!-- <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <h1>Slide 1</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 2</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 3</h1>
+      <input type="text" [(ngModel)]="name">
+    </ion-slide>
+  </ion-slides> -->
+  <!-- <ion-button (click)="finishAppOnboarding()">Lets Start</ion-button> -->
+
+<div class="onboard-main">
+ 
+  <div class="onboard-top">
+    <ion-toolbar>
+      <ion-buttons @fade slot="start" *ngIf="this.index!=0">
+        <ion-button (click)="goBack()" style="    background: #f8faff;
+        border-radius: 57px;">
+          <ion-icon slot="icon-only" name="chevron-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <!-- <ion-buttons slot="end">
+        <ion-button color="dark" (click)="skipBtn()">
+          skip
+        </ion-button>
+      </ion-buttons> -->
+    </ion-toolbar>
+  </div>
+  <img src="/assets/icon/logoLarge.png" alt="" style="    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 56%;">
+  <!-- (ionSlideDidChange)="slideChanged($event)"  -->
+  <div class="onboard-bot">
+    <ion-slides [options]="slideOpts" style="   padding-bottom: 11.5%;" pager="true" #mainSlides (ionSlideDidChange)="slideChanged($event)">
+      <ion-slide>
+        <div class="onb-card">
+          <div class="onb-img">
+              <img src="/assets/slide_12.png" alt="">
+          </div>
+          <div class="onb-desc inpn-text-center">
+            <h4 class="ion-text-captalize ion-no-margin" style="">See What's Happening </h4>
+            <p class="ion-no-margin" style="">
+              Get all the city updates, announcement. Posted by the people around you.
+            </p>
+          </div>
+          
+        
+          
+        </div>
+        
+      </ion-slide>
+      <ion-slide>
+        <div class="onb-card">
+          <div class="onb-img">
+              <img src="/assets/slide_2.png" alt="">
+          </div>
+          <div class="onb-desc inpn-text-center">
+            <h4 class="ion-text-captalize ion-no-margin">News Updates</h4>
+            <p class="ion-no-margin">
+             Have all the latest Akot city news
+            </p>
+          </div>
+        
+        </div>
+        
+      </ion-slide>
+      <ion-slide>
+        <div class="onb-card">
+          <div class="onb-img">
+              <img src="/assets/slide_3.png" alt="">
+          </div>
+          <div class="onb-desc inpn-text-center">
+            <h4 class="ion-text-captalize ion-no-margin">Near by Places</h4>
+            <p class="ion-no-margin">
+              Get infarction of the availability of  essential and emergency services around you
+              <!-- #dontAskNumberToAnyone -->
+            </p>
+          </div>
+        </div>
+        
+      </ion-slide>
+      <ion-slide>
+        <div class="onb-card">
+          <div class="onb-img">
+              <img src="/assets/slide_4.png" alt="">
+          </div>
+          <div class="onb-desc inpn-text-center">
+            <h4 class="ion-text-captalize ion-no-margin">Events</h4>
+            <p class="ion-no-margin">
+              Add and find event updates around you.
+            </p>
+          </div>
+          
+        
+          
+        </div>
+        
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <!-- <ion-fab vertical="bottom" horizontal="end"  *ngFor="let slides of onboardSlides" >
+    <ion-fab-button (click)="goNext()" *ngIf="slides.visible">
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+</div>
+<div class="footer">
+  <p style="margin:15px 0 0  ;
+  font-size: 11px;
+  color: black;"> To improve In-App experience, Please enter full your name! <br> ( कृपया आपले पूर्ण नाव प्रविष्ट करा! )</p>
+  <input type="text"  class={{cssClass}} placeholder={{placeName}} [(ngModel)]="name" (click)=" clickTextBox()">
+  <input type="button"  value="Get Started" style="width: 42%;" class="btn2" (click)="skipBtn()">
+</div>
+
+
+
+</ion-content>

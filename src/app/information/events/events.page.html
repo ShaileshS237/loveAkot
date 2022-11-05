@@ -1,0 +1,98 @@
+
+<ion-header class="ion-no-border">
+  <ion-toolbar style="--background:#8ec5ff;color: #073f7a;">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content style="--background: linear-gradient(
+  180deg
+  , #8ec5ff, white);">
+  <div style="    margin:14px 15px 0;
+  max-height: 186px;
+  overflow: hidden;
+  border-radius: 7px;">
+      <img style="    border-radius: 7px;" src={{data.image}} alt="" *ngIf="data.image !== undefined" (click)="viewImage(data.image)">
+      <img style="    border-radius: 7px;" src="/assets/eventsss.jpg" alt="" *ngIf="data.image === undefined"  >
+  </div>
+  <div >
+    <h1 style="font-size: 32px; font-weight: 800;color: #073f7a;
+    padding: 0px 31px;">
+     {{data.eTitle | titlecase }}
+    </h1>
+  </div>
+  <div style="background:#f8f8f8;padding: 7px;margin: 17px;border-radius: 9px;" >
+    
+    <ion-grid class="info"> 
+      <ion-row>
+        <ion-col size="3">
+          <div class="image">
+            <ion-icon name="calendar" style="background-color: #073f7a;"></ion-icon>
+              
+          </div>
+        </ion-col>
+        <ion-col size="9">
+          <h1>Date</h1>
+          <h2>{{data.sDate | date:'dd/MMM/yyyy'}} to {{data.eDate | date:'dd/MMM/yyyy'}}</h2>
+        </ion-col>
+      </ion-row>
+     
+      <ion-row>
+        <ion-col size="3">
+          <div class="image">
+            <ion-icon name="time" style="background-color: #073f7a;"></ion-icon>
+          </div>
+        </ion-col>
+        <ion-col size="9">
+          <h1>Timing</h1>
+          <h2>{{data.oTime}} A.M To {{data.eTime}} P.M</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3">
+          <div class="image">
+            <ion-icon name="call" (click)="call()" style="background-color: #073f7a;"></ion-icon>
+          </div>
+        </ion-col>
+        <ion-col size="9">
+          <h1>Orgninzer Number</h1>
+          <h2 style="user-select: text;">+91-{{data.contName}}</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3">
+          <div class="image">
+            <ion-icon name="location" style="background-color: #073f7a;"></ion-icon>
+          </div>
+        </ion-col>
+        <ion-col size="9">
+          <h1>Location</h1>
+          <h2>{{data.address}}</h2>
+        </ion-col>
+      </ion-row>
+  </ion-grid>  
+ 
+  </div>
+   
+  <div class="para">
+    <h1>
+      About Event
+    </h1>
+    <p style="font-size: 13px;">
+      {{data.about}}
+    </p>
+  </div>
+  <!-- <div class="footer">
+    <ion-grid class="info"> 
+      <ion-row>
+        <ion-col size="6">
+      
+        </ion-col>
+        <ion-col size="6">
+         
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+  </div> -->
+</ion-content>

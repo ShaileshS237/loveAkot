@@ -1,0 +1,90 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style=" min-height: 0px;">
+  <div *ngIf="language=='English'">
+    <div style="padding: 2px 10px;">
+      <img src="/assets/infoCon.jpg" alt="" style="border-radius: 6px;
+    ">
+    </div>
+    <ion-grid class="ion-no-margin" class="ion-no-padding" >
+      <ion-row>
+        
+        <ion-col size="12" (click)="presentAlertPrompt()" >
+          <ion-card style="height: auto;background: linear-gradient(
+            45deg
+            , #0042d6, #002d93);">
+            <h1 style="font-size: 13px;margin: 10px; text-align: center;color: #ffffff;">Request For Category</h1>
+        </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <h1 style="margin-top: 16px;    font-size: 13px;
+    padding-left: 3.5%;
+    font-weight: bold;    font-weight: 300;
+    color: #888888;">Select The Category To Contribute</h1>
+     <ion-grid style="text-align:center;"  >
+       <ion-row >
+         <ion-col size="3" *ngFor="let data of category"  >
+           <div (click)="navigate(data.id,data.title,data.titleM)" style="    border: 1px solid #d1d1d1; height: 100%;;
+           ;border-radius: 9px; ">
+           <div style="
+           color: white; display: flex;
+     justify-content: center;
+     align-items: center;">
+             <img style=" max-width: 80%;
+             max-height: 100%; padding: 13px 13px 0px 13px;" src="{{data.img}}" alt="">
+          
+         </div>
+         <h1 style="   padding: 6px 5px 13px 5px;;font-size: 10px; ">{{data.title}} </h1>
+       </div> 
+         </ion-col>
+       </ion-row>
+       </ion-grid>
+  </div>
+  <div *ngIf="language=='Marathi'"> 
+    <div style="padding: 2px 10px;">
+      <img src="/assets/infoConM.jpg" alt="" style="border-radius: 6px;
+    ">
+    </div>
+    <ion-grid class="ion-no-margin" class="ion-no-padding" >
+      <ion-row>
+        
+        <ion-col size="12" (click)="presentAlertPrompt()" >
+          <ion-card style="height: auto;background: linear-gradient(
+            45deg
+            , #0042d6, #002d93);">
+            <h1 style="font-size: 13px;margin: 10px; text-align: center;color: #ffffff;font-family: 'Mukta';">कॅटेगरीसाठी विनंती करा</h1>
+        </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <h1 style="margin-top: 16px;    font-size: 13px;
+    padding-left: 3.5%;
+    font-weight: bold;    font-weight: 300;
+    color: #888888;font-family: 'Mukta';">योगदान देण्यासाठी कॅटेगरी सिलेक्ट करा</h1>
+     <ion-grid style="text-align:center;"  >
+       <ion-row >
+         <ion-col size="3" *ngFor="let data of category"  >
+           <div (click)="navigate(data.id,data.title,data.titleM)" style="    border: 1px solid #d1d1d1; height: 100%;;
+           ;border-radius: 9px; ">
+           <div style="
+           color: white; display: flex;
+     justify-content: center;
+     align-items: center;">
+             <img style=" max-width: 80%;
+             max-height: 100%; padding: 13px 13px 0px 13px;" src="{{data.img}}" alt="">
+          
+         </div>
+         <h1 style="   padding: 6px 5px 13px 5px;;font-size: 10px;font-family: 'Mukta'; ">{{data.titleM}}</h1>
+       </div> 
+         </ion-col>
+       </ion-row>
+       </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,426 @@
+<ion-header [translucent]="true" class="ion-no-border"  *ngIf="!this.showError">
+  <ion-toolbar  id="new-background-color"   >
+    <ion-title *ngIf="!searchBarOn" style="padding: 4px 0px 0px 5px;" >
+     <img src="/assets/theakot times.png" alt="" style="    max-width:87%;"  >
+    </ion-title>
+    <ion-buttons slot="end" style="background: #1950ff;
+    color: white;
+    border-radius: 3px;" *ngIf="!searchBarOn"   >
+      <ion-button [routerLink]="['/add-news']" *ngIf="language != 'Marathi'">
+        <ion-icon name="add-outline"></ion-icon><span style="text-transform: capitalize;">Add News</span>
+       </ion-button> 
+       <ion-button [routerLink]="['/add-news']" *ngIf="language == 'Marathi'">
+        <ion-icon name="add-outline"></ion-icon><span style="text-transform: capitalize;font-family: 'Mukta', sans-serif;">बातमी टाका</span>
+       </ion-button> 
+    </ion-buttons>
+  <!-- <ion-searchbar *ngIf="searchBarOn" showCancelButton="focus"></ion-searchbar>
+    <ion-buttons slot="end" (click)="toggle()" > 
+      <ion-button>
+        <ion-icon name="search-outline" ></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!this.showError">
+<div *ngIf="language != 'Marathi'">
+  <div style="padding: 3px 13px;">
+    <h1 style="margin: 6px 0px;    font-size: 21px;
+    margin: 0px;
+    font-weight: 300;" *ngIf="name">Hey, <span style="font-weight: 500;"> {{name | titlecase}} </span></h1>
+    <h2  style="margin: 5px 0px; font-size: 34px;
+    margin: 0px;    font-weight: 800;    background: -webkit-linear-gradient( 
+  214deg
+   ,#0037e5, #ff5151);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;" >Discover Latest News</h2>
+      <h1 style="margin: 0px;
+      font-size: 15px;
+      color: #787878;
+      font-weight: 400;    padding: 8px 0px 0;background: -webkit-linear-gradient( 
+  214deg
+   ,#0037e5, #ff5151);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;">{{DateTime | date : 'MMMM d, y'}} | {{DateTime | date : 'h:mm:ss a'}}</h1>
+  </div>
+   <div *ngIf="!this.showError" >
+    <ion-grid class="ion-no-padding" >
+      <ion-row style=""> 
+        <ion-col size="6"><h1 style="margin: 10px 0px 10px 13px; font-weight:300; font-size: 19px;" >Todays'News</h1></ion-col>
+        <ion-col size="6" *ngIf="!noToday">
+          <input style="    border: none;
+          border-radius: 4px;
+          font-size: 12px;
+          margin: 7px 10px 8px 13px;
+          float: right;
+          padding: 8px;" type="button" value="View More" (click)="moreNews(1)"  ></ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <div style="height: 100px; width: 100px;  background-color: black;"></div> *ngIf="noToday"-->
+    <div style="height: 229px;" *ngIf="noToday" >
+        <h1 style="color: #929292;
+        text-align: center;margin: 0px;
+        padding-top: 25%;
+        font-size: 10px;">No News To Show</h1>
+    </div>
+    <ion-slides  effect="cube" style="height: 100%px; margin:0px;" [options]="daysSlides" *ngIf="contentLoaded" >
+      <ion-slide style="text-align: left; " *ngFor="let post of todayNews">
+        <ion-card style="min-width: 270px;    box-shadow: 0px -6px 70px -30px rgb(0 0 0 / 75%);
+        border-radius: 12px;" (click)="navigate(post.id,post.Title,post.Description,post.image,post.Date,post.count,post.ContName)" *ngIf='"{{todayDate | slice:0:15}} === {{post.Date| slice:0:15}}"'>
+          <div style="overflow: hidden;
+         height: 128px;">
+            <img style="width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: none;" src={{post.image}} alt="" [hidden]="loading" (load)="onLoad()" >
+            <!-- <div class="blob" *ngIf="loading"></div> -->
+            <!-- <img  src="/assets/giphy.gif" alt="loading"  style="width: auto;
+            max-width: 100%;
+            height: auto;padding: 18px 16% 0px 16%;
+            max-height: none;"  /> -->
+          </div>        
+          <!--  -->
+          <ion-card-header style="padding-bottom: 8px;" >
+            <ion-card-subtitle style="font-size: 12px;"> {{post.Date | timeago | titlecase }} <br>Posted By : {{post.ContName | titlecase}}</ion-card-subtitle>
+            <ion-card-title style="font-weight: 700; font-size: 15px;line-height: 1.5em;
+            height: 3em;       /* height is 2x line-height, so two lines will display */
+            overflow: hidden;">{{ post.Title }}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content style="font-size: 12px;     white-space: nowrap;
+          
+          overflow: hidden;
+          text-overflow: ellipsis">
+           {{post.Description}}
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>  
+    <div *ngIf="!stopLoading" style="    align-items: center;
+      text-align: center;
+      margin: 31% 0;">
+        <ion-spinner  name="dots" ></ion-spinner>
+      </div>
+      <div style="
+      margin-bottom: 14px;" >
+        <h1  style="margin: 10px 0px 10px 13px; font-weight:300; font-size: 19px;">Recent News</h1>
+      </div>
+    <!-- <ion-slides  effect="cube" style="height: 100%px; margin:0px;" [options]="daysSlides" *ngIf="!contentLoaded">
+      <ion-slide style="text-align: left; "*ngFor="let post of [].constructor(2)">
+        <ion-card  style="width: 100%;box-shadow: 0px -6px 70px -30px rgb(0 0 0 / 75%);
+        border-radius: 12px;">
+          <div style="overflow: hidden;
+          height: 158px;">
+           <ion-skeleton-text animated style="    margin: 0px;"></ion-skeleton-text></div>        
+          
+          <ion-card-header style="padding-bottom: 8px;">
+            <ion-card-subtitle style="font-size: 12px;"><ion-skeleton-text animated style="width: 38%"></ion-skeleton-text></ion-card-subtitle>
+            <ion-card-title style="font-weight: 700; font-size: 15px;"><ion-skeleton-text animated style="width: 100%"></ion-skeleton-text><ion-skeleton-text animated style="width: 56%"></ion-skeleton-text></ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content style="">
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>   -->
+       
+   <div style="padding: 0px 20px 0px 20px;"  >
+    <div style=" ">
+     
+      <div style="height: 229px;" *ngIf="noOther" >
+        <h1 style="color: #929292;
+        text-align: center;margin: 0px;
+        padding-top: 91px;
+        font-size: 10px;">No Recent News To Show</h1>
+    </div>
+      <div style="   
+      height: 100%;
+      width: 100%;
+      border-radius: 6px;
+      background-color: #f8f8f8;
+      position: relative; margin-bottom: 10px;" *ngFor="let item of nottodayNews" >
+          <ion-grid  *ngIf="contentLoaded" >
+            <ion-row (click)="navigate(item.id,item.Title,item.Description,item.image,item.Date,item.count,item.ContName)">
+              <ion-col size="3" >
+                <div style="overflow:hidden;height:68px;width:68px;border-radius: 5px;">
+                  <img style="height: 100%;" src=  {{item.image}} alt="">
+                  
+                </div>
+              </ion-col>
+              <ion-col >
+               <ion-title style="    font-size: 10px; padding:0px;background: -webkit-linear-gradient( 
+                214deg
+                 ,#0037e5, #ff5151);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;"> {{item.Date | date : 'MMMM d, y'}} | {{item.Date | date : 'h:mm a'}}</ion-title>
+               <h1 style="margin-top: 5px;
+               font-weight: 700;font-size: 13px; width: 93%; margin-bottom: 0px;line-height: 1.5em;
+            height: 3em;       /* height is 2x line-height, so two lines will display */
+            overflow: hidden;">{{item.Title}}</h1>
+               <ion-title style="    font-size: 10px; padding:0px;">   By : {{item.ContName | titlecase}} </ion-title>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+      </div>
+      
+    </div>
+    
+   </div>
+    
+          <div *ngIf="!noOther">
+            <h1 *ngIf="contentLoaded" style="text-align: right;font-size: 13px;
+            color: #1950ff;
+            margin: 0px;    margin: 10px 0;
+            padding: 0 22px;" (click)="moreNews(2)" >
+              View All
+            </h1>
+          </div>
+            <!-- (click)="moreNews(2)" -->
+           
+   <div style="padding: 0px 20px 0px 20px;" *ngIf="!contentLoaded"  >
+    <div >
+    
+      <div style="   
+      height: 100%;
+      width: 100%;
+      border-radius: 6px;
+      background-color: #f8f8f8;
+      position: relative; margin-bottom: 10px;" *ngFor="let item of [].constructor(5)" >
+          <ion-grid   >
+            <ion-row >
+              <ion-col size="3" >
+                <div style="overflow:hidden;height:68px;width:68px;border-radius: 5px;">
+                  <ion-skeleton-text animated style="width: 87%"></ion-skeleton-text>
+                </div>
+              </ion-col>
+              <ion-col >
+               <ion-title style="    font-size: 10px; padding:0px"> <ion-skeleton-text animated style="width: 38%"></ion-skeleton-text></ion-title>
+               <h1 style="margin-top: 5px;
+               font-weight: 700;font-size: 13px; width: 93%; margin-bottom: 0px;"><ion-skeleton-text animated style="width: 87%"></ion-skeleton-text>
+               <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+               <ion-skeleton-text animated style="width: 55%"></ion-skeleton-text> </h1>
+              </ion-col>
+              
+            </ion-row>
+            </ion-grid>
+      </div>
+      
+    </div>
+    
+   </div>    
+   </div> 
+   
+  <!-- <div *ngIf="!this.fetch">
+    <h1 style="    font-size: 12px;
+    text-align: center;
+    padding: 69% 21%;
+    color: #8f8f8f;
+    margin: 0px;">Something Went Wrong,<br> Check Your Internet Connection</h1>
+  </div> -->
+  
+</div>
+<div *ngIf="language == 'Marathi'">
+  <div style="padding: 3px 13px;">
+    <h1 style="margin: 6px 0px;    font-size: 21px;
+    margin: 0px;
+    font-weight: 300;font-family: 'Mukta', sans-serif;" *ngIf="name">नमस्कार, <span style="font-weight: 500;"> {{name | titlecase}} </span></h1>
+    <h2  style="margin: 5px 0px; font-size: 34px;
+    margin: 0px;    font-weight: 800;    background: -webkit-linear-gradient( 
+  214deg
+   ,#0037e5, #ff5151);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;font-family: 'Mukta', sans-serif;" >ताज्या बातम्या <br>शोधा</h2>
+      <h1 style="margin: 0px;
+      font-size: 15px;
+      color: #787878;
+      font-weight: 400;    padding: 8px 0px 0;background: -webkit-linear-gradient( 
+  214deg
+   ,#0037e5, #ff5151);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;font-family: 'Mukta', sans-serif;">{{DateTime | date : 'MMMM d, y'}} | {{DateTime | date : 'h:mm:ss a'}}</h1>
+  </div>
+   <div *ngIf="!this.showError" >
+    <ion-grid class="ion-no-padding" >
+      <ion-row style=""> 
+        <ion-col size="6"><h1 style="margin: 10px 0px 10px 13px; font-weight:300; font-size: 19px;font-family: 'Mukta', sans-serif;" >ठळक बातम्या</h1></ion-col>
+        <ion-col size="6" *ngIf="!noToday">
+          <input style="    border: none;
+          border-radius: 4px;
+          font-size: 12px;font-family: 'Mukta', sans-serif;
+          margin: 7px 10px 8px 13px;
+          float: right;
+          padding: 8px;" type="button" value="अजून बघा" (click)="moreNews(1)"  ></ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <div style="height: 100px; width: 100px;  background-color: black;"></div> *ngIf="noToday"-->
+    <div style="height: 229px;" *ngIf="noToday" >
+        <h1 style="color: #929292;
+        text-align: center;margin: 0px;
+        padding-top: 25%;
+        font-size: 10px;font-family: 'Mukta', sans-serif;">कोणत्याही बातम्या नाही.</h1>
+    </div>
+    <ion-slides  effect="cube" style="height: 100%px; margin:0px;" [options]="daysSlides" *ngIf="contentLoaded" >
+      <ion-slide style="text-align: left; " *ngFor="let post of todayNews">
+        <ion-card style="min-width: 270px;    box-shadow: 0px -6px 70px -30px rgb(0 0 0 / 75%);
+        border-radius: 12px;" (click)="navigate(post.id,post.Title,post.Description,post.image,post.Date,post.count,post.ContName)" *ngIf='"{{todayDate | slice:0:15}} === {{post.Date| slice:0:15}}"'>
+          <div style="overflow: hidden;
+         height: 128px;">
+            <img style="width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: none;" src={{post.image}} alt="" [hidden]="loading" (load)="onLoad()" >
+            <!-- <div class="blob" *ngIf="loading"></div> -->
+            <!-- <img  src="/assets/giphy.gif" alt="loading"  style="width: auto;
+            max-width: 100%;
+            height: auto;padding: 18px 16% 0px 16%;
+            max-height: none;"  /> -->
+          </div>        
+          <!--  -->
+          <ion-card-header style="padding-bottom: 8px;" >
+            <ion-card-subtitle style="font-size: 12px;font-family: 'Mukta', sans-serif;"> {{post.Date | timeago | titlecase }} <br>बातमी {{post.ContName | titlecase}} यांनी टाकली</ion-card-subtitle>
+            <ion-card-title style="font-weight: 700; font-size: 15px;line-height: 1.5em;
+            height: 3em;       /* height is 2x line-height, so two lines will display */
+            overflow: hidden;font-family: 'Mukta', sans-serif;">{{ post.Title }}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content style="font-size: 12px;     white-space: nowrap;
+          
+          overflow: hidden;
+          text-overflow: ellipsis">
+           {{post.Description}}
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>  
+    <div *ngIf="!stopLoading" style="    align-items: center;
+      text-align: center;
+      margin: 31% 0;">
+        <ion-spinner  name="dots" ></ion-spinner>
+      </div>
+      <div style="
+      margin-bottom: 14px;" >
+        <h1  style="margin: 10px 0px 10px 13px; font-weight:300; font-size: 19px;font-family: 'Mukta', sans-serif;">मागील बातम्या</h1>
+      </div>
+    <!-- <ion-slides  effect="cube" style="height: 100%px; margin:0px;" [options]="daysSlides" *ngIf="!contentLoaded">
+      <ion-slide style="text-align: left; "*ngFor="let post of [].constructor(2)">
+        <ion-card  style="width: 100%;box-shadow: 0px -6px 70px -30px rgb(0 0 0 / 75%);
+        border-radius: 12px;">
+          <div style="overflow: hidden;
+          height: 158px;">
+           <ion-skeleton-text animated style="    margin: 0px;"></ion-skeleton-text></div>        
+          
+          <ion-card-header style="padding-bottom: 8px;">
+            <ion-card-subtitle style="font-size: 12px;"><ion-skeleton-text animated style="width: 38%"></ion-skeleton-text></ion-card-subtitle>
+            <ion-card-title style="font-weight: 700; font-size: 15px;"><ion-skeleton-text animated style="width: 100%"></ion-skeleton-text><ion-skeleton-text animated style="width: 56%"></ion-skeleton-text></ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content style="">
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>   -->
+       
+   <div style="padding: 0px 20px 0px 20px;"  >
+    <div style=" ">
+     
+      <div style="height: 229px;" *ngIf="noOther" >
+        <h1 style="color: #929292;
+        text-align: center;margin: 0px;
+        padding-top: 91px;
+        font-size: 10px;">No Recent News To Show</h1>
+    </div>
+      <div style="   
+      height: 100%;
+      width: 100%;
+      border-radius: 6px;
+      background-color: #f8f8f8;
+      position: relative; margin-bottom: 10px;" *ngFor="let item of nottodayNews" >
+          <ion-grid  *ngIf="contentLoaded" >
+            <ion-row (click)="navigate(item.id,item.Title,item.Description,item.image,item.Date,item.count,item.ContName)">
+              <ion-col size="3" >
+                <div style="overflow:hidden;height:68px;width:68px;border-radius: 5px;">
+                  <img style="height: 100%;" src=  {{item.image}} alt="">
+                  
+                </div>
+              </ion-col>
+              <ion-col >
+               <ion-title style="    font-size: 10px; padding:0px;background: -webkit-linear-gradient( 
+                214deg
+                 ,#0037e5, #ff5151);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;"> {{item.Date | date : 'MMMM d, y'}} | {{item.Date | date : 'h:mm a'}}</ion-title>
+               <h1 style="margin-top: 5px;
+               font-weight: 700;font-size: 13px; width: 93%; margin-bottom: 0px;line-height: 1.5em;
+            height: 3em;       /* height is 2x line-height, so two lines will display */
+            overflow: hidden;font-family: 'Mukta', sans-serif;">{{item.Title}}</h1>
+               <ion-title style="    font-size: 10px; padding:0px;font-family: 'Mukta', sans-serif;">   By : {{item.ContName | titlecase}} </ion-title>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+      </div>
+      
+    </div>
+    
+   </div>
+    
+          <div *ngIf="!noOther">
+            <h1 *ngIf="contentLoaded" style="text-align: right;font-size: 13px;
+            color: #1950ff;font-family: 'Mukta', sans-serif;
+            margin: 0px;    margin: 10px 0;
+            padding: 0 22px;" (click)="moreNews(2)" >
+              अजून बघा..
+            </h1>
+          </div>
+            <!-- (click)="moreNews(2)" -->
+           
+   <div style="padding: 0px 20px 0px 20px;" *ngIf="!contentLoaded"  >
+    <div >
+    
+      <div style="   
+      height: 100%;
+      width: 100%;
+      border-radius: 6px;
+      background-color: #f8f8f8;
+      position: relative; margin-bottom: 10px;" *ngFor="let item of [].constructor(5)" >
+          <ion-grid   >
+            <ion-row >
+              <ion-col size="3" >
+                <div style="overflow:hidden;height:68px;width:68px;border-radius: 5px;">
+                  <ion-skeleton-text animated style="width: 87%"></ion-skeleton-text>
+                </div>
+              </ion-col>
+              <ion-col >
+               <ion-title style="    font-size: 10px; padding:0px"> <ion-skeleton-text animated style="width: 38%"></ion-skeleton-text></ion-title>
+               <h1 style="margin-top: 5px;
+               font-weight: 700;font-size: 13px; width: 93%; margin-bottom: 0px;"><ion-skeleton-text animated style="width: 87%"></ion-skeleton-text>
+               <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+               <ion-skeleton-text animated style="width: 55%"></ion-skeleton-text> </h1>
+              </ion-col>
+              
+            </ion-row>
+            </ion-grid>
+      </div>
+      
+    </div>
+    
+   </div>    
+   </div> 
+   
+  <!-- <div *ngIf="!this.fetch">
+    <h1 style="    font-size: 12px;
+    text-align: center;
+    padding: 69% 21%;
+    color: #8f8f8f;
+    margin: 0px;">Something Went Wrong,<br> Check Your Internet Connection</h1>
+  </div> -->
+  
+</div>
+</ion-content>
+
+<ion-content *ngIf="this.showError">
+  <div >
+    <img src="/assets/nointernet.png" alt="" style="padding: 200px 68px;">
+  </div>
+</ion-content>

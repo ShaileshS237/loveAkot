@@ -1,0 +1,289 @@
+<ion-header class="ion-no-border" style="--background-color: #0042D6;">
+
+  <ion-toolbar style="--background: #eef2fb;">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content style="--background:white">
+  
+  <img src="/assets/docBack.jpg" alt="" style="">
+  <div style="background: white;
+  height: auto; min-height: 130px;
+  border-radius: 15px;    padding: 22px 21px;
+  bottom: 76px;
+  position: relative;" >
+<div style=" ">
+  <h1 style="
+margin: 0px;
+   font-weight: 700;color: black;">{{data.name | titlecase}}</h1>
+  <h2 style="color: black;
+margin: 0px;
+font-weight: 300;    font-size: 19px;">
+    {{data.degree | uppercase}}
+  </h2>
+  <h2 style="color: black;
+margin: 0px;
+font-weight: 300;       font-size: 15px;">
+    {{data.category | titlecase}}
+  </h2>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding">
+      <ion-col size="4" style="    padding: 8px 8px 7px 0;">
+        <div (click)="presentAlertConfirm()"
+          style="background-color:#1E1E3F; height: 40px; width: 100%;    border-radius: 6px; color: white;    padding: 9px;">
+          <ion-icon name="call" style="    width: 100%;
+      height: 100%;"></ion-icon>
+        </div>
+      </ion-col>
+      <!-- <ion-col size="3" style="    padding: 8px 8px 7px 0;">
+        <div
+          style="background-color:#1E1E3F;  height: 40px; width: 100%;     border-radius: 6px; color: white;  padding: 9px;">
+          <ion-icon name="logo-whatsapp" style="    width: 100%;
+      height: 100%;"></ion-icon>
+        </div>
+      </ion-col> -->
+
+    </ion-row>
+  </ion-grid>
+
+
+</div>
+
+<ion-grid class="ion-no-margin" style="text-align: center;border-radius: 6px;background: antiquewhite;color:#ff9200;margin-top: 16px;">
+  <ion-row>
+    <ion-col size="6">
+      <h2 style="font-weight: 300; color: #ff7600;">Fees</h2>
+      <h1 style="margin-top: 7px;font-weight: 700;">{{data.fees}} Rs.</h1>
+    </ion-col>
+    <!-- <ion-col size="4">
+      <h2 style="font-weight: 300;color: #ff7600;">Experiance</h2>
+      <h1 style="margin-top: 7px;font-weight: 700;">{{data.exp}} Yrs.</h1>
+    </ion-col> -->
+    <ion-col size="6">
+      <h2 style="font-weight: 300;color: #ff7600;">In App Rating</h2>
+      <h1 style="margin-top: 7px;font-weight: 700;">{{total | slice:0:3}} Stars</h1>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<h1 style="
+font-weight: 300;    font-size: 14px;">
+  Working Hours.
+</h1>
+<div style="height: auto;
+    border-radius: 5px;
+    background-color: #0f0f51;
+    color: white;">
+        <ion-grid>
+          <ion-row style="text-align: center;;">
+            <ion-col>
+              <div>
+                <h1 style=" font-size: 15px;    font-weight: 300;">Morning</h1>
+                <h1 style="font-size: 15px;    margin-top: 4px;">{{data.mTime1}} To {{data.mTime2}}</h1>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <h1 style=" font-size: 15px;    font-weight: 300;">Evening</h1>
+                <h1 style="font-size: 15px;    margin-top: 4px;">{{data.eTime1}} To {{data.eTime2}}</h1>
+              </div>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+        <div style="height: auto; background-color: red;    border-radius: 0 0 5px 5px;
+       padding: 5px 0;">
+          <h1 style="    margin: 0;
+        color: white;
+        text-align: center;font-size: 14px;">{{data.off | titlecase}} off </h1>
+        </div>
+      </div>
+      <h1 style="
+font-weight: 300;    font-size: 14px;">
+ Clinic Address.
+</h1>
+      <div style="height: auto;    border-radius: 5px; background-color: #0f0f51;    ">
+        <ion-grid>
+          <ion-row style="    color: white;">
+            <ion-col>
+              <div>
+                <h1 style="font-size: 13px;     margin: 0 13px;">{{data.address | titlecase}}</h1>
+              </div>
+            </ion-col>
+
+
+          </ion-row>
+        </ion-grid>
+
+      </div>
+      <h1 style="
+font-weight: 300;    font-size: 14px;">
+ Contact No.  
+</h1>
+      <div style="height: auto;    border-radius: 5px; background-color: #0f0f51;    ">
+        <ion-grid>
+          <ion-row style=" color: white;">
+            <ion-col>
+              <div>
+                <h1 style="font-size: 13px;     margin: 0 13px;">+91-{{data.MobNo}}</h1>
+              </div>
+            </ion-col>
+
+
+          </ion-row>
+        </ion-grid>
+
+      </div>
+      <hr style="background-color: #cdcdcd;    height: 0.5px;">
+      <h1 style="
+font-weight: 300;    font-size: 14px;
+    margin-top: 10px;
+">
+ Rate This Doctor.
+</h1>
+        <ion-grid style="     padding: 0 14px;">
+      
+          <ion-row >
+            <ion-col class="emoji" (click)="addClass(id=1,'/assets/1.png')" [ngClass]="{'active': id === 1 }" id="1"   >
+              <img style="padding: 7px;" src="/assets/1.png" alt="">
+            </ion-col>
+            <ion-col class="emoji" (click)="addClass(id=2,'/assets/2.png')" [ngClass]="{'active': id === 2 }" id="2" >
+              <img style="padding: 7px;" src="/assets/2.png" alt="">
+            </ion-col>
+            <ion-col class="emoji" (click)="addClass(id=3,'/assets/3.png')" [ngClass]="{'active': id === 3 }" id="3" >
+              <img style="padding: 7px;" src="/assets/3.png" alt="">
+            </ion-col>
+            <ion-col class="emoji" (click)="addClass(id=4,'/assets/4.png')" [ngClass]="{'active': id === 4 }" id="4" >
+              <img style="padding: 7px;" src="/assets/4.png" alt="">
+            </ion-col>
+            <ion-col class="emoji" (click)="addClass(id=5,'/assets/5.png')" [ngClass]="{'active': id === 5 }" id="5" >
+              <img style="padding: 7px;" src="/assets/5.png" alt="">
+            </ion-col>
+          </ion-row>
+          </ion-grid>
+          <!-- [(ngModel)]="Name" -->
+          <div *ngIf="yesReview" @fade style=" ">
+            <input   [(ngModel)]="Name" type="name" name="" id="" placeholder="Your Name(Leave Blank if want to keep secreate)" style="font-size: 13px;
+            padding: 10px;text-transform: capitalize;
+            border: none;
+            max-width: 100%;
+            width: 659px;
+            border: 0.5px solid #c7c7c7;
+            border-radius: 6px;
+            margin: 0 0 13px 0;
+            ">
+            <textarea name="" id="" cols="30" rows="10" placeholder="Write Something" style="font-size: 13px;
+            padding: 10px;
+            height: 128px;    border: 0.5px solid #c7c7c7;
+            min-height: 128px;
+            max-width: 100%;
+            width: 659px;
+            border-radius: 6px;
+            margin: 0px;
+            max-height: 128px;" [(ngModel)]="Review"   ></textarea>
+              <h2 *ngIf="error2" style="margin: 0px 4px;
+              color: red;
+              font-size: 10px;
+              font-weight: 300;" id="error"> *Please Say Something</h2>
+           <ion-grid >
+             <ion-row>
+               <ion-col size="6">
+                 <input type="button" class="revieText" [disabled]="!Review ||  clicked === 1" value="Submit"  style="    border: none;
+                 width: 102%;
+                 color: white;
+                 border-radius: 53px;
+                 
+                 padding: 10px;" (click)="createReview()">
+               </ion-col>
+               <ion-col size="6" >
+                <input (click)="notNow()" type="button" value="Not Now" style="    border: none;
+                width: 102%;
+                color: black;
+                border-radius: 53px;
+                background: #dcdcdc;
+                padding: 10px;">
+               </ion-col >
+             </ion-row>
+           </ion-grid>
+           
+          </div>
+
+
+          <hr style="background-color: #cdcdcd;    height: 0.5px;">
+          
+         <h1 style="
+         font-weight: 300;    font-size: 14px;
+             margin-top: 10px;
+         ">
+          User Rating & Reviews.
+         </h1>
+         <ion-grid fixed>
+          <ion-row>
+            <ion-col size="5" style="text-align: center;    padding: 6% 8%;">
+              <h1 style="    margin: 0px;
+              font-weight: 800;
+              font-size: 43px;
+          ">{{total | slice:0:3}}</h1>
+              <h2 style="    font-weight: 300;
+              margin: 0px;
+              font-size: 15px;">Out of 5</h2>
+              <span style="font-size: 13px;"> Total Reviews: {{count}} </span>
+            </ion-col>
+            <ion-col size="7">
+              <div>
+                <ion-grid fixed>
+                  <ion-row>
+                    <ion-col size="1">5</ion-col>
+                    <ion-col size="11"> <ion-progress-bar value={{five}} style="margin: 7px 0;" color="success"></ion-progress-bar></ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="1">4</ion-col>
+                    <ion-col size="11"> <ion-progress-bar value={{four}} style="margin: 7px 0;" color="warning"></ion-progress-bar></ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="1">3</ion-col>
+                    <ion-col size="11"> <ion-progress-bar value={{three}} style="margin: 7px 0;" color="tertiary"></ion-progress-bar></ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="1">2</ion-col>
+                    <ion-col size="11"> <ion-progress-bar value={{two}} style="margin: 7px 0;"></ion-progress-bar></ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="1">1</ion-col>
+                    <ion-col size="11"> <ion-progress-bar value={{one}} style="margin: 7px 0;" color="danger"></ion-progress-bar></ion-col>
+                  </ion-row>
+                </ion-grid>
+                </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+         <div style="height: auto; background-color: #f7f7f7;    border-radius: 8px; margin: 15px 0;" *ngFor="let item of review">
+          <ion-grid  >
+            <ion-row > 
+           
+              <ion-col size="9"> <h1 style="    font-weight: 800;
+               margin: 0px;
+               padding-left: 11px;font-size: 15px;">{{item.Name | titlecase}}</h1>
+             <h2 style="    padding-left: 11px;
+             font-size: 12px;font-weight: 300;
+             margin: 0px;">{{item.Date |  timeago | titlecase }}</h2>  
+             </ion-col>
+              <ion-col size="3"><img style="    padding: 0 11px 0 11px;
+               max-width: 71%;float: right;
+           " src={{item.emoji}} alt=""></ion-col>
+            </ion-row>
+            <hr style="background-color: #e1e1e1;    margin: 0.5px;">
+            <ion-row>
+              <ion-col size="12">
+                
+                <p style="margin: 1px;
+               padding: 0px 11px;
+               font-size: 15px;">{{item.Review}}</p></ion-col>
+            </ion-row>
+          </ion-grid>
+         
+       </div> 
+  </div>
+  
+</ion-content>

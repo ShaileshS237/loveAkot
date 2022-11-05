@@ -1,0 +1,264 @@
+ <ion-header class="ion-no-border" *ngIf="!this.showError">
+  <ion-toolbar style="
+  --background: #0042d6;"> 
+     <ion-buttons slot="start" style="color: white;">
+      <ion-button (click)="onClick()">
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>  
+    <!-- <ion-title>Events</ion-title> -->
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content *ngIf="!this.showError" >
+ 
+  <div *ngIf="language == 'English'">
+    <img src="assets/events.jpg" alt="">
+ 
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+                <h1 style="margin: 16px 16px 16px 0;
+                margin-bottom: 0px;
+                font-size: 17px;
+                font-weight: 300;
+                color: #6f6f6f;
+          ">Ongoing Events</h1>
+  
+          </ion-col>
+          <ion-col size="3">
+  
+                <p style="background: #eeeeee;
+                margin-bottom: 0px;
+                text-align: center;
+                font-size: 10px;
+                color: #0042d6;
+                font-weight: 500;
+                padding: 8px;
+                border-radius: 5px;
+          " (click)="navigate(this.onGoingAll)" *ngIf="onGoingAllCount <= 3">View More</p>
+          </ion-col>
+  
+        </ion-row>
+      </ion-grid>
+      <div style="height: 229px;" *ngIf="noOther" >
+        <h1 style="color: #929292;
+        text-align: center;margin: 0px;
+        padding-top: 91px;
+        font-size: 10px;">No Recent News To Show</h1>
+    </div>
+    <div *ngIf="!stopLoading" style="    align-items: center;
+    text-align: center;
+    margin:29%;">
+      <ion-spinner  name="dots" ></ion-spinner>
+    </div>
+      <div >
+        <!-- <h1  style="margin-top: 60%; text-align: center; color: #bbbbbb;    font-size: 11px;">Sorry, No Current Event Available</h1> -->
+        <ion-slides  paginationType=""  effect="cube" style=" margin:0px;" [options]=" eventSlides" style="    height: auto;" >
+          <ion-slide style="text-align: left;width:auto;color: white"*ngFor="let item of onGoing" >
+            <ion-card style="width: 100%;background: linear-gradient(
+              221deg
+              , rgba(2,0,79,1) 0%, rgba(14,42,119,1) 100%);;color: white;border-radius: 7px;    min-height: 233px;
+            max-height: 233px ;" >
+              <ion-card-header>
+                <ion-card-subtitle style="color: white;font-size: 11px;">Date :<br> {{ item.sDate | date:'dd/MM/yyyy' }} To {{ item.eDate | date:'dd/MM/yyyy' }}</ion-card-subtitle>
+                <ion-card-subtitle style="color: white;font-size: 11px;">Timing : {{ item.oTime}} To {{ item.eTime}}</ion-card-subtitle>
+                <ion-card-title style="color: white;font-size:18px;font-weight: 700;">{{item.eTitle | titlecase}}</ion-card-title>
+              </ion-card-header>
+  
+              <!-- <ion-card-content style="font-size: 11px;">
+             {{ item.address}}
+  
+              </ion-card-content> -->
+              <ion-button color="light" style="--border-radius: 4px;  position: fixed;  margin-left: 4%;    margin-bottom: 5%;    bottom: 8px;" (click)="navigate2(item)">Know More</ion-button>
+            </ion-card>
+          </ion-slide>
+  
+        </ion-slides>
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+  
+                <h1 style="margin: 16px 16px 16px 0;
+                margin-bottom: 0px;
+                font-size: 17px;
+                font-weight: 300;
+                color: #6f6f6f;
+          ">Upcoming Events</h1>
+  
+          </ion-col>
+        
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div style="height: 229px;" *ngIf="noToday" >
+      <h1 style="color: #929292;
+      text-align: center;margin: 0px;
+      padding-top: 91px;
+      font-size: 10px;">No Upcoming Events To Show</h1>
+  </div>
+    <ion-grid style="padding: 8px;" *ngFor="let item of upComing" >
+      <ion-row style="background-color: #f6f6f6;    border-radius: 8px;">
+        <ion-col size="3">
+          <div  style=" border-radius: 6px;border-radius: auto;height: 100%;background-color: #d0d0d0;    padding: 21%;">
+            <h1 style="    margin: 0px;
+            text-align: center;
+            font-weight: 900;
+            font-size: 14px;
+            color: #666666;" > {{item.sDate | date:'dd'}} <br>{{item.sDate | date:'MMM'}}
+            </h1>
+        </div>
+        </ion-col>
+        <ion-col>
+          <h1 style="margin: 6px;font-size: 12px;font-weight: 300;">
+            Timing : {{item.oTime}} To {{item.eTime}}
+          </h1>
+          <h1 style="margin: 6px;    font-weight: bold;font-size: 17px;    color: #a2a2a2;">
+            {{item.eTitle | titlecase}}
+          </h1>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+ 
+  
+   
+  </div>
+
+
+
+
+  <div *ngIf="language == 'Marathi'" >
+    <img src="assets/eventsM.jpg" alt="">
+ 
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+                <h1 style="margin: 16px 16px 16px 0;
+                margin-bottom: 0px;
+                font-size: 17px;
+                font-weight: 300;
+                color: #6f6f6f;font-family: 'Mukta';
+          ">चालू असलेले कार्यक्रम</h1>
+  
+          </ion-col>
+          <ion-col size="3">
+  
+                <p style="background: #eeeeee;
+                margin-bottom: 0px;
+                text-align: center;
+                font-size: 10px;
+                color: #0042d6;
+                font-weight: 500;
+                padding: 8px;font-family: 'Mukta';
+                border-radius: 5px;
+          " (click)="navigate(this.onGoingAll)" *ngIf="onGoingAllCount <= 3">अधिक पाहा</p>
+          </ion-col>
+  
+        </ion-row>
+      </ion-grid>
+      <div style="height: 229px;" *ngIf="noOther" >
+        <h1 style="color: #929292;
+        text-align: center;margin: 0px;
+        padding-top: 91px;font-family: 'Mukta';
+        font-size: 10px;">कोणतीही कार्यक्रम नाही</h1>
+    </div>
+    <div *ngIf="!stopLoading" style="    align-items: center;
+    text-align: center;
+    margin:29%;">
+      <ion-spinner  name="dots" ></ion-spinner>
+    </div>
+      <div >
+        <!-- <h1  style="margin-top: 60%; text-align: center; color: #bbbbbb;    font-size: 11px;">Sorry, No Current Event Available</h1> -->
+        <ion-slides  paginationType=""  effect="cube" style=" margin:0px;" [options]=" eventSlides" style="    height: auto;" >
+          <ion-slide style="text-align: left;width:auto;color: white"*ngFor="let item of onGoing" >
+            <ion-card style="width: 100%;background: linear-gradient(
+              221deg
+              , rgba(2,0,79,1) 0%, rgba(14,42,119,1) 100%);;color: white;border-radius: 7px;    min-height: 233px;
+            max-height: 233px ;" >
+              <ion-card-header>
+                <ion-card-subtitle style="color: white;font-size: 11px;">Date :<br> {{ item.sDate | date:'dd/MM/yyyy' }} To {{ item.eDate | date:'dd/MM/yyyy' }}</ion-card-subtitle>
+                <ion-card-subtitle style="color: white;font-size: 11px;">Timing : {{ item.oTime}} To {{ item.eTime}}</ion-card-subtitle>
+                <ion-card-title style="color: white;font-size:18px;font-weight: 700;">{{item.eTitle | titlecase}}</ion-card-title>
+              </ion-card-header>
+  
+              <!-- <ion-card-content style="font-size: 11px;">
+             {{ item.address}}
+  
+              </ion-card-content> -->
+              <ion-button color="light" style="--border-radius: 4px;  position: fixed;  margin-left: 4%;    margin-bottom: 5%;    bottom: 8px;" (click)="navigate2(item)">Know More</ion-button>
+            </ion-card>
+          </ion-slide>
+  
+        </ion-slides>
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+  
+                <h1 style="margin: 16px 16px 16px 0;
+                margin-bottom: 0px;
+                font-size: 17px;
+                font-weight: 300;
+                color: #6f6f6f;font-family: 'Mukta';
+          ">आगामी कार्यक्रम</h1>
+  
+          </ion-col>
+        
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div style="height: 229px;" *ngIf="noToday" >
+      <h1 style="color: #929292;
+      text-align: center;margin: 0px;
+      padding-top: 91px;font-family: 'Mukta';
+      font-size: 10px;">कोणतीही आगामी कार्यक्रम उपलब्ध नाही</h1>
+  </div>
+    <ion-grid style="padding: 8px;" *ngFor="let item of upComing" >
+      <ion-row style="background-color: #f6f6f6;    border-radius: 8px;">
+        <ion-col size="3">
+          <div  style=" border-radius: 6px;border-radius: auto;height: 100%;background-color: #d0d0d0;    padding: 21%;">
+            <h1 style="    margin: 0px;
+            text-align: center;
+            font-weight: 900;
+            font-size: 14px;
+            color: #666666;" > {{item.sDate | date:'dd'}} <br>{{item.sDate | date:'MMM'}}
+            </h1>
+        </div>
+        </ion-col>
+        <ion-col>
+          <h1 style="margin: 6px;font-size: 12px;font-weight: 300;">
+            Timing : {{item.oTime}} To {{item.eTime}}
+          </h1>
+          <h1 style="margin: 6px;    font-weight: bold;font-size: 17px;    color: #a2a2a2;">
+            {{item.eTitle | titlecase}}
+          </h1>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  
+    <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed"  [routerLink]="['/eventsadd']">
+      <ion-fab-button color="light" >
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+  
+   
+  </div>
+   
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"  [routerLink]="['/eventsadd']">
+    <ion-fab-button color="light" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-content *ngIf="this.showError">
+  <div >
+    <img src="/assets/nointernet.png" alt="" style="padding: 200px 68px;">
+  </div>
+</ion-content>

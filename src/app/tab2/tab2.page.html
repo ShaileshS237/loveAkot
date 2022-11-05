@@ -1,0 +1,88 @@
+<ion-router-outlet id="main"></ion-router-outlet>
+
+<ion-content style=" min-height: 0px;">
+ <div *ngIf="language != 'Marathi'">
+  <div>
+    <img style="border-radius: 19px;padding: 9px;" src="/assets/search.jpg" alt="" >
+  </div>
+   <h1 style="font-size: 16px;
+   padding-left: 3.5%;
+   font-weight: 300;
+   color: #888888;background: -webkit-linear-gradient( 
+214deg
+ ,#0037e5, #ff5151);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;">All Category</h1>
+   <div *ngIf="!stopLoading" style="    align-items: center;
+   text-align: center;
+   margin-top: 44%;">
+     <ion-spinner  name="dots" ></ion-spinner>
+   </div>
+  <div style="    margin: 7px 12px;">
+    <!-- <ion-searchbar (ionChange)="_ionChange($event)" #search placeholder="Search Category"  style="border: 1px solid #0042d680;border-radius: 5px;--box-shadow: none;padding: 1px;"></ion-searchbar> -->
+  </div>
+    <ion-grid style="text-align:center;"  >
+      <ion-row >
+        <ion-col size="3" *ngFor="let data of category"  >
+          <div (click)="navigate(data.id,data.title,data.titleM,  data.Link)" style="    border: 1px solid #d1d1d1; height: 100%;;
+          ;border-radius: 9px; ">
+          <div style="min-height: 40%;
+          color: white; display: flex;
+    justify-content: center;
+    align-items: center;">
+            <img style=" max-width: 80%; 
+            max-height: 100%; padding: 13px 13px 0px 13px;" src="{{data.img}}" alt="" >
+         <!-- <ion-spinner name="dots" *ngIf="!data.img"></ion-spinner> -->
+        </div>
+        <h1 style="   padding: 6px 5px 13px 5px;;font-size: 10px; ">{{data.title | titlecase}} </h1>
+      </div> 
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+ </div>
+ <div *ngIf="language == 'Marathi'">
+  <div>
+    <img style="border-radius: 19px;padding: 9px;" src="/assets/searchM.jpg" alt="" >
+  </div>
+   <h1 style="font-size: 16px;
+   padding-left: 3.5%;
+   font-weight: 300;
+   color: #888888;background: -webkit-linear-gradient( 
+214deg
+ ,#0037e5, #ff5151);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Mukta';
+">सर्व श्रेणी</h1>
+   <div *ngIf="!stopLoading" style="    align-items: center;
+   text-align: center;
+   margin-top: 44%;">
+     <ion-spinner  name="dots" ></ion-spinner>
+   </div>
+  <div style="    margin: 7px 12px;">
+    <!-- <ion-searchbar (ionChange)="_ionChange($event)" #search placeholder="Search Category"  style="border: 1px solid #0042d680;border-radius: 5px;--box-shadow: none;padding: 1px;"></ion-searchbar> -->
+  </div>
+    <ion-grid style="text-align:center;"  >
+      <ion-row >
+        <ion-col size="3" *ngFor="let data of category"  >
+          <div (click)="navigate(data.id,data.title,data.titleM,data.Link)" style="    border: 1px solid #d1d1d1; height: 100%;;
+          ;border-radius: 9px; ">
+          <div style="min-height: 40%;
+          color: white; display: flex;
+    justify-content: center;
+    align-items: center;">
+    <!-- <ion-spinner name="dots" style="padding: 39px 13px 0px 13px;" ></ion-spinner> -->
+
+            <img style=" max-width: 80%; 
+            max-height: 100%; padding: 13px 13px 0px 13px;" src="{{data.img}}" alt="" >
+         <!-- <ion-spinner name="dots" *ngIf="!data.img"></ion-spinner> -->
+        </div>
+        <h1 style="   padding: 9px 5px 13px 5px;;font-size: 12px;
+        font-family: 'Mukta';     ">{{data.titleM }} </h1>
+      </div> 
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+ </div>
+ 
+</ion-content>

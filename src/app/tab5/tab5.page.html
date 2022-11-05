@@ -1,0 +1,275 @@
+
+
+
+<ion-header class="ion-no-border">
+ 
+  
+</ion-header>
+
+<ion-content style="--background:#F0F2F5;">
+  <div *ngIf="language =='English'">
+<!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"  pullFactor="0.5" pullMin="100" pullMax="200">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> -->
+  <div id="header" *ngIf="scrolled == 0"> <ion-fab vertical="top" horizontal="end" edge slot="fixed" [routerLink]="['/postadd']" >
+    <ion-fab-button style="--background: #04c1c3;    margin-top: 123px;">
+      <ion-icon name="add"></ion-icon>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-fab-button>
+  </ion-fab></div>
+<div id="header2" *ngIf="scrolled == 1"></div>
+  <div style="background: linear-gradient(90deg, rgba(2,0,79,1) 0%, rgba(14,42,119,1) 100%);    min-height: 128px;
+  max-height: 128px;">
+    <!-- <div>
+      <img src="/assets/shailesh.png" alt="">
+    </div> -->
+   <h1  style="font-weight: 300;margin: 0px;padding: 36px  9px 0px 35px;font-size: 21px;" *ngIf="language == 'English'">
+    <span style="color:white;font-weight: 700; font-size: 35px;" > Share  </span><br>
+   </h1>
+   <h1  style="font-weight: 300;margin: 0px;padding: 36px  9px 0px 35px;font-size: 21px;" *ngIf="language == 'Marathi'">
+    <span style="color:white;font-weight: 700; font-size: 35px;    font-family: 'Mukta';"> शेअर करा!! </span><br>
+   </h1>
+    <h1 class="tw2" style="font-weight: 300;margin: 0px;padding: 0px  9px 69px 35px;font-size: 21px;    font-family: 'Mukta';">
+     
+   
+    
+  </h1>
+  
+  </div>
+  <div id="rainbow-progress-bar" *ngIf="loading"></div>
+  <!-- <ion-progress-bar value="0.5" color="warning" [type]="'indeterminate'" *ngIf="loading"></ion-progress-bar> -->
+  <div *ngIf="this.showError">
+    <img src="/assets/nointernet.png" alt="" style="padding: 128px 68px;">
+  </div>
+    <div *ngIf="!stopLoading" style="    align-items: center;
+    text-align: center;
+    margin-top: 56%;">
+      <ion-spinner  name="dots" ></ion-spinner>
+    </div>
+  <div *ngIf="!this.showError" style="    margin-top: 21px;" >
+    <div  *ngFor="let post of posts" style="    margin-bottom: 12px;" >
+    
+
+      <div *ngIf="post.Message"  >
+        <ion-grid >
+          <ion-row >
+            <ion-col size="10" style="    position: relative;z-index: -1;top: 7px;"> 
+              <span style="background: blue;padding: 8px;font-size: 12px;border-radius: 4px;color: white;">
+               {{post.Name |uppercase }}
+              </span>
+            </ion-col>
+            <ion-col  size="2" style="text-align: end;    color: #9e9e9e;position: relative;top: 7px;" >
+              <ion-icon name="ellipsis-vertical" (click)="presentActionSheet(post.image,post.Message,post.id,post.uuid,post.fileName)" class="ion-activatable ripple-parent">              <ion-ripple-effect></ion-ripple-effect></ion-icon>
+
+            </ion-col>
+                                
+          </ion-row>
+      </ion-grid>
+      
+      <div @fade  style="overflow: hidden;     margin-bottom: 12px;    height: auto; max-height: 100%; border-radius: 0 4px 4px 4px;margin: 0 10px; background-color: white;">
+        <div style=" width: 100%;min-height: 100%;">
+          <p style="    margin: 0px;        font-family: 'Mukta';
+          padding: 11px 19px;    white-space: pre-line;
+          font-size: 20px;" *ngIf="post.Message!='N.A'">{{post.Message | slice:0:300}}<span (click)="redirectComment(post.id)" *ngIf="post.show == true" style="    
+    color: #6089fd;" >.... See More</span></p> 
+            <div *ngIf="post.image" style="overflow: hidden; height: auto; max-height: 287px; ;margin: 0 10px 10px 10px;border-radius: 4px 4px 4px 4px">
+              <div style=" width: 100%;min-height: 100%;  ">
+               <img [hidden]="loading" (load)="onLoad()" src="{{post.image}}" alt="" (click)="viewImage(post.image)" style="margin-top: 11px;border-radius: 4px 4px 4px 4px;    width: 100%;">
+             </div>
+             <div style=" width: 100%;min-height: 100%; display: block;
+             margin-left: auto;
+             margin-right: auto;background-color: white;">
+               <img src="https://i.stack.imgur.com/h6viz.gif" *ngIf="loading" alt="" style="    margin-left: 28%;
+               max-width: 42%;">
+             </div>
+           </div>
+         </div>
+         <ion-grid fixed>
+          <ion-row>
+            <ion-col >
+         
+              <!-- <ion-chip  color="success" *ngIf="this.liked === 'true'" (click)="unlike(post.id,post.likes)">
+                <ion-icon name="thumbs-up-outline"></ion-icon>
+                <ion-label>Liked</ion-label>
+              </ion-chip>
+              <ion-chip outline color="success"  *ngIf="this.liked === 'false'"  (click)="like(post.id,post .likes)">
+                <ion-icon name="thumbs-up-outline"></ion-icon>
+                <ion-label>Like</ion-label>
+              </ion-chip> -->
+              <!-- <ion-chip outline color="danger" (click)="redirectComment(post.id)">
+                <ion-icon name="chatbox-outline"></ion-icon>
+                <h1 style="    margin: 0px;
+                font-size: 13px;
+                font-weight: 400;
+            ">0 Comment</h1>
+              </ion-chip> -->
+              <ion-chip outline color="success" (click)="share(post.id,post.image, post.post)">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+                <h1 style="    margin: 0px;
+                font-size: 13px;
+                font-weight: 400;
+            ">Share</h1>
+              </ion-chip>
+         
+            </ion-col>
+           
+          </ion-row>
+        </ion-grid> 
+      
+      </div>   
+      <!-- <div>
+        <h1 style="margin: 2px 0px;font-size: 11px;padding: 1px 0 0 19px;color: black;">  {{post.likes}} Likes</h1>
+      
+      </div>  -->
+<!--      
+      <div>
+        <h1 style="margin: 2px 0px;font-size: 11px;padding: 1px 0 0 19px;color: black;">  Like By 22 People</h1>
+      
+      </div>
+      <div>
+        <h1 style="margin: 2px 0px;font-size: 11px;padding: 1px 0 0 19px;color: #b5b5b5;">Like By 22 People</h1>
+      </div> -->
+      <div>
+        <h1 style="margin: 2px 0px;font-size: 11px;padding: 1px 0 0 19px;color: #b5b5b5;">{{ post.date | timeago | titlecase }}</h1>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  </div>
+ 
+
+
+  <div *ngIf="language=='Marathi'">
+<!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"  pullFactor="0.5" pullMin="100" pullMax="200">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> -->
+  <div id="header" *ngIf="scrolled == 0"> <ion-fab vertical="top" horizontal="end" edge slot="fixed" [routerLink]="['/postadd']" >
+    <ion-fab-button style="--background: #04c1c3;    margin-top: 123px;">
+      <ion-icon name="add"></ion-icon>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+    </ion-fab-button>
+  </ion-fab></div>
+<div id="header2" *ngIf="scrolled == 1"></div>
+  <div style="background: linear-gradient(90deg, rgba(2,0,79,1) 0%, rgba(14,42,119,1) 100%);    min-height: 128px;
+  max-height: 128px;">
+    <!-- <div>
+      <img src="/assets/shailesh.png" alt="">
+    </div> -->
+   <h1  style="font-weight: 300;margin: 0px;padding: 36px  9px 0px 35px;font-size: 21px;" *ngIf="language == 'English'">
+    <span style="color:white;font-weight: 700; font-size: 35px;" > Share  </span><br>
+   </h1>
+   <h1  style="font-weight: 300;margin: 0px;padding: 36px  9px 0px 35px;font-size: 21px;" *ngIf="language == 'Marathi'">
+    <span style="color:white;font-weight: 700; font-size: 35px;    font-family: 'Mukta';"> शेअर करा!! </span><br>
+   </h1>
+    <h1 class="tw2" style="font-weight: 300;margin: 0px;padding: 0px  9px 69px 35px;font-size: 21px;    font-family: 'Mukta';">
+     
+   
+    
+  </h1>
+  
+  </div>
+  <div id="rainbow-progress-bar" *ngIf="loading"></div>
+  <!-- <ion-progress-bar value="0.5" color="warning" [type]="'indeterminate'" *ngIf="loading"></ion-progress-bar> -->
+  <div *ngIf="this.showError">
+    <img src="/assets/nointernet.png" alt="" style="padding: 128px 68px;">
+  </div>
+    <div *ngIf="!stopLoading" style="    align-items: center;
+    text-align: center;
+    margin-top: 56%;">
+      <ion-spinner  name="dots" ></ion-spinner>
+    </div>
+  <div *ngIf="!this.showError" style="    margin-top: 21px;" >
+    <div  *ngFor="let post of posts" style="    margin-bottom: 12px;" >
+    
+
+      <div *ngIf="post.Message"  >
+        <ion-grid >
+          <ion-row >
+            <ion-col size="10" style="    position: relative;z-index: -1;top: 7px;"> 
+              <span style="background: blue;padding: 8px;font-size: 12px;border-radius: 4px;color: white;">
+               {{post.Name |uppercase }}
+              </span>
+            </ion-col>
+            <ion-col  size="2" style="text-align: end;    color: #9e9e9e;position: relative;top: 7px;" >
+              <ion-icon name="ellipsis-vertical" (click)="presentActionSheet(post.image,post.Message,post.id,post.uuid,post.fileName)" class="ion-activatable ripple-parent">              <ion-ripple-effect></ion-ripple-effect></ion-icon>
+
+            </ion-col>
+                                
+          </ion-row>
+      </ion-grid>
+      
+      <div @fade  style="overflow: hidden;     margin-bottom: 12px;    height: auto; max-height: 100%; border-radius: 0 4px 4px 4px;margin: 0 10px; background-color: white;">
+        <div style=" width: 100%;min-height: 100%;">
+          <p style="    margin: 0px;    font-family: 'Mukta';
+          padding: 11px 19px;    white-space: pre-line;
+          font-size: 20px;" *ngIf="post.Message!='N.A'">{{post.Message | slice:0:300}}<span (click)="redirectComment(post.id)" *ngIf="post.show == true" style="    font-family: 'Mukta';
+    color: #6089fd;" >.... आणखी बघा</span></p> 
+            <div *ngIf="post.image" style="overflow: hidden; height: auto; max-height: 287px; ;margin: 0 10px 10px 10px;border-radius: 4px 4px 4px 4px">
+              <div style=" width: 100%;min-height: 100%;  ">
+               <img [hidden]="loading" (load)="onLoad()" src="{{post.image}}" alt="" (click)="viewImage(post.image)" style="margin-top: 11px;border-radius: 4px 4px 4px 4px;    width: 100%;">
+             </div>
+             <div style=" width: 100%;min-height: 100%; display: block;
+             margin-left: auto;
+             margin-right: auto;background-color: white;">
+               <img src="https://i.stack.imgur.com/h6viz.gif" *ngIf="loading" alt="" style="    margin-left: 28%;
+               max-width: 42%;">
+             </div>
+           </div>
+         </div>
+         <ion-grid fixed>
+          <ion-row>
+            <ion-col >
+<!--          
+              <ion-chip  color="success" *ngIf="this.liked" (click)="unlike(post.id,post.likes)">
+                <ion-icon name="thumbs-up-outline"></ion-icon>
+                <ion-label>Liked</ion-label>
+              </ion-chip>
+              <ion-chip outline color="success"  *ngIf="!this.liked"  (click)="like(post.id,post .likes)">
+                <ion-icon name="thumbs-up-outline"></ion-icon>
+                <ion-label>Like</ion-label>
+              </ion-chip> -->
+              <!-- <ion-chip outline color="danger" (click)="redirectComment(post.id)">
+                <ion-icon name="chatbox-outline"></ion-icon>
+                <h1 style="    margin: 0px;
+                font-size: 13px;
+                font-weight: 400;
+            ">0 Comment</h1>
+              </ion-chip> -->
+              <ion-chip outline color="success" (click)="share(post.id,post.image, post.post)">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+                <h1 style="    margin: 0px;
+                font-size: 13px;font-family: 'Mukta';
+                font-weight: 400;
+            ">शेअर करा</h1>
+              </ion-chip>
+         
+            </ion-col>
+           
+          </ion-row>
+        </ion-grid> 
+      
+      </div>   
+      <!-- <div>
+        <h1 style="margin: 2px 0px;font-size: 11px;padding: 1px 0 0 19px;color: black;">  {{post.likes}} Likes</h1>
+      
+      </div>  -->
+<!--      
+      <div>
+        <h1 style="margin: 2px 0px;font-size: 11px;padding: 1px 0 0 19px;color: black;">  Like By 22 People</h1>
+      
+      </div>
+      <div>
+        <h1 style="margin: 2px 0px;font-size: 11px;padding: 1px 0 0 19px;color: #b5b5b5;">Like By 22 People</h1>
+      </div> -->
+      <div>
+        <h1 style="margin: 2px 0px;font-size: 11px;padding: 1px 0 0 19px;color: #b5b5b5;">{{ post.date | timeago | titlecase }}</h1>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  </div>
+</ion-content>

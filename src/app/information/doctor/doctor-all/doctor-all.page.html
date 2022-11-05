@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div style="height: 166px;
+  overflow: hidden;
+  border-radius: 7px;
+  margin: 0 13px;">
+    <img src={{bImage}} alt="" style="" >
+  </div>
+    <div style="
+    padding: 0 10px;
+    ">
+         <!-- (click)="addDoc()" -->
+        <h1 style="    margin: 8px;    font-weight: 300;">Top {{title}}s</h1>
+        <div *ngIf="!stopLoading" style="    align-items: center;
+         text-align: center;
+         margin-top: 44%;">
+           <ion-spinner  name="dots" ></ion-spinner>
+         </div>
+    
+        <div class="drName"  *ngIf="stopLoading" >
+            <ion-grid  *ngFor="let doc of catDoc" >
+                <ion-row  style="background: #EDF1FA;border-radius: 5px;; padding: 7px;" (click)="navigate(doc)">
+                  <ion-col size="3" >
+                    <img src="/assets/WomenDr.png" alt="" *ngIf="doc.sex ==='female'">
+                    <img src="/assets/men dr.png" alt="" *ngIf="doc.sex ==='male'">
+                  </ion-col>
+                  <ion-col style="margin-left: 2px; ">
+                    <h1 style="
+                    margin-top: 9px;">{{doc.name | titlecase}}</h1>
+                    <h2>{{doc.degree | uppercase}}</h2>
+                    <h2></h2>
+                  </ion-col>
+                </ion-row>
+                
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>

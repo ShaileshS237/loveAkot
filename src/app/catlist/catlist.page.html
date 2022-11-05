@@ -1,0 +1,126 @@
+  <ion-header class="ion-no-border">
+  <ion-toolbar>
+   <ion-buttons slot="start">
+     <ion-back-button></ion-back-button>
+   </ion-buttons>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div style="padding:0 13px;" *ngIf="language == 'English'">
+  <h1 style="margin:0px ; font-size: 24px;    font-weight: 800;" >Find. <br><span style="background: -webkit-linear-gradient( 
+    214deg
+     ,#0037e5, #ff5151);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent">{{title}}</span></h1>
+ <div    style="    padding:5px 0 0">
+  <div>
+  <ion-slides mode="md" pager="md" [options]="slideOpts" >
+    <ion-slide  *ngFor="let item of images" >
+      <div (click)="viewImage(item.image)">
+        <img src={{item.image}} alt="" style="border-radius: 6px;" >
+      </div>
+    </ion-slide>
+   
+  </ion-slides>
+  </div>
+</div>
+    <div >
+      <div style="height: 77px; background-color:#0c1329  ;border-radius: 5px;     margin: 6px 0px 6px 0px;" *ngFor="let item of posts">
+        <ion-grid (click)="navigate(item.id,item.Name,title,item.About,item.Address,item.Mobile,item.StartTime,item.EndTime,item.imageId,item.uuid,item.off)" >
+          <ion-row >
+             
+            <ion-col style="padding-left: 13px; 
+            line-height: 20px;
+            padding: 15px;           margin-top: 6px;">
+             <span style="top: 14px;color: white;">{{item.Name | titlecase}}</span><br>
+             
+            </ion-col>
+            
+            <ion-col size="2" >
+              <div style="background-color:#ffffff; height: 53px;
+              width: 53px;border-radius: 5px;    float: right;" >
+                 <ion-icon name="arrow-forward" style="height: 50%;
+                 width: 50%;
+                 padding: 13px;"></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>  
+      </div>
+    </div>
+    <div style="    position: fixed;
+    bottom: -5px;
+    left: 0PX;
+  " (click)="navigate2()">
+      <img src="/assets/contri2.jpg" alt="" style="">
+    </div>
+    <div *ngIf="noData"  >
+      <h1 style="color: #959595;    margin-top: 56%; text-align: center; font-size: 10px;">Sorry, No {{title}} Available.</h1>
+    </div>
+  </div >
+  
+
+
+  <div style="padding:0 13px;" *ngIf="language == 'Marathi'"> 
+    <h1 style="margin:0px ; font-size: 24px;    font-weight: 800;font-family: Mukta;" >शोधा. <br><span style="background: -webkit-linear-gradient( 
+      214deg
+       ,#0037e5, #ff5151);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;font-family: Mukta;
+    font-size: 32px;">{{titleM}}</span></h1>
+   <div    style="    padding:5px 0 0">
+    <div>
+    <ion-slides mode="md" pager="md" [options]="slideOpts" >
+      <ion-slide  *ngFor="let item of images" >
+        <div (click)="viewImage(item.image)">
+          <img src={{item.image}} alt="" style="border-radius: 6px;" >
+        </div>
+      </ion-slide>
+     
+    </ion-slides>
+    </div>
+  </div >
+      <div >
+        <div style="height: auto; background-color:#0c1329  ;border-radius: 5px;     margin: 6px 0px 6px 0px;" *ngFor="let item of posts">
+          <ion-grid  (click)="navigate(item.id,item.Name,title,item.About,item.Address,item.Mobile,item.StartTime,item.EndTime,item.imageId,item.uuid,item.off)">
+            <ion-row >
+             
+              <ion-col style="padding-left: 13px; 
+              line-height: 20px;
+              padding: 15px;           margin-top: 6px;">
+               <span style="top: 14px;color: white;">{{item.Name | titlecase}}</span><br>
+               
+              </ion-col>
+              
+              <ion-col size="2" >
+                <div style="background-color:#ffffff; height: 53px;
+                width: 53px;border-radius: 5px;    float: right;" >
+                   <ion-icon name="arrow-forward" style="height: 50%;
+                   width: 50%;
+                   padding: 13px;"></ion-icon>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>  
+        </div>
+      </div>
+      <div style="    position: fixed;
+      bottom: -5px;
+      left: 0PX;
+    " (click)="navigate2()">
+        <img src="/assets/contri2M.jpg" alt="" style="">
+      </div>
+      <div *ngIf="noData"  >
+        <h1 style="color: #959595;    margin-top: 56%; text-align: center; font-size: 10px;    font-family: Mukta;">माफ करा, कोणतेही {{titleM}} सापडले नाही.</h1>
+      </div>
+    </div>
+    
+<!-- <div style="background-color: wheat;">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+</div> -->
+</ion-content>

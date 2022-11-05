@@ -1,0 +1,146 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="text-align: center;--ion-background-color:rgba(14,42,119,1); color: white;">
+    <ion-title *ngIf="language=='English'" >Add News</ion-title>
+    <ion-title *ngIf="language=='Marathi'" style="font-family: 'Mukta';" >बातमी टाका</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+ 
+    <ion-content>
+     <div *ngIf="language=='English'">
+      <div class="container">
+        <div class="column1">
+                <div class="form-control">
+                    <label for='username'>Title of News</label>
+                    <input [(ngModel)]="Title" placeholder="Title"/>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for='email'>Detailed Description</label>
+                    <textarea [(ngModel)]="Description" placeholder="Deatiled Description" style=" height: 128px;
+                    width: 100%;
+                    min-width: 100%;
+                    max-width: 100%;
+                    max-height: 128px;
+                    min-height: 128px;;"></textarea> 
+                    <small>Error message</small>
+                </div>
+                <!-- <div class="form-control">
+                    <label for='password'>Blood Group Want</label>
+                    <select id="cat" name="cat" type="text" [(ngModel)]="Category" >
+                      <option value="A +ve">A +ve</option>
+                      <option value="A -ve">A -ve</option>
+                      <option value="B +ve" >B +ve</option>
+                      <option value="B -ve">B -ve</option>
+                      <option value="AB +ve">AB +ve</option>
+                      <option value="AB -ve" >AB -ve</option>
+                      <option value="O" >O</option>
+                    </select>
+                    <small>Error message</small>
+                </div> -->
+                <div class="form-control">
+                    <label for='address'>Contributor's Name</label>
+                    <input [(ngModel)]="ContName " placeholder="Contributor Name" style="text-transform: capitalize;"/>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                  <label for='message'>Image</label>
+                  <ion-icon *ngIf="this.showClose" name="close-sharp" style="    position: absolute;
+                  height: 30px;
+                  color: white;
+                  width: 37px;
+                  left: 84%;
+                  background: #ffc409;" (click)="clear()"></ion-icon>
+                   <div *ngIf="this.tImage">
+           
+                     <div style="max-height: 127px; overflow: hidden;border-radius: 6px;    margin-bottom: 10px;">
+                       <img src={{this.tImage}} alt="" style="">
+                     </div>
+                   </div>
+                  <input  #myInput type="file" (change)="upload($event)" accept="*.png.jpg" id="">
+                  <h6 style="    font-size: 8px;margin: 4px;">*if no image is available, Leave Blank</h6>
+                  <small>Error message</small>
+              </div>
+                <button [disabled]="!Title || !Description || !ContName || clicked === 1 " (click)="createNews()">Submit</button>
+                
+        </div>
+        
+    
+    </div>
+    <div class="footer">
+      <h1 style="    margin-top: 10px;
+      margin-bottom: 10px; font-size:11px ;padding: 0px 6px 0px 14px;">Please,Dont Post Fake News. <span ></span></h1>
+    </div>
+   
+    <h1 style="font-size: 14px;color: white;text-align: center;">or send us @ iloveakot@gmail.com</h1>
+     </div>
+     <div *ngIf="language=='Marathi'">
+      <div class="container">
+        <div class="column1">
+                <div class="form-control">
+                    <label for='username'>बातमीचा टायटल</label>
+                    <input [(ngModel)]="Title" placeholder="बातमीचा टायटल"/>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for='email'>तपशीलवार वर्णन</label>
+                    <textarea [(ngModel)]="Description" placeholder="तपशीलवार वर्णन" style=" height: 128px;
+                    width: 100%;
+                    min-width: 100%;
+                    max-width: 100%;
+                    max-height: 128px;
+                    min-height: 128px;;"></textarea> 
+                    <small>Error message</small>
+                </div>
+                <!-- <div class="form-control">
+                    <label for='password'>Blood Group Want</label>
+                    <select id="cat" name="cat" type="text" [(ngModel)]="Category" >
+                      <option value="A +ve">A +ve</option>
+                      <option value="A -ve">A -ve</option>
+                      <option value="B +ve" >B +ve</option>
+                      <option value="B -ve">B -ve</option>
+                      <option value="AB +ve">AB +ve</option>
+                      <option value="AB -ve" >AB -ve</option>
+                      <option value="O" >O</option>
+                    </select>
+                    <small>Error message</small>
+                </div> -->
+                <div class="form-control">
+                    <label for='address'>योगदानकर्त्याचे नाव</label>
+                    <input [(ngModel)]="ContName " placeholder="योगदानकर्त्याचे नाव" style="text-transform: capitalize;"/>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                  <label for='message'>इमेज</label>
+                  <ion-icon *ngIf="this.showClose" name="close-sharp" style="    position: absolute;
+                  height: 30px;
+                  color: white;
+                  width: 37px;
+                  left: 84%;
+                  background: #ffc409;" (click)="clear()"></ion-icon>
+                   <div *ngIf="this.tImage">
+           
+                     <div style="max-height: 127px; overflow: hidden;border-radius: 6px;    margin-bottom: 10px;">
+                       <img src={{this.tImage}} alt="" style="">
+                     </div>
+                   </div>
+                  <input  #myInput type="file" (change)="upload($event)" accept="*.png.jpg" id="">
+                  <h6 style="    font-size: 8px;margin: 4px;">*
+                    कोणतीही प्रतिमा उपलब्ध नसल्यास, रिक्त सोडा</h6>
+                  <small>Error message</small>
+              </div>
+                <button [disabled]="!Title || !Description || !ContName || clicked === 1 " (click)="createNews()">बातमी टाका</button>
+                
+        </div>
+        
+    
+    </div>
+    <div class="footer">
+      <h1 style="    margin-top: 10px;
+      margin-bottom: 10px; font-size:11px ;padding: 0px 6px 0px 14px;    font-family: 'Mukta';">कृपया, फेक बातमी नका टाकू <span ></span></h1>
+    </div>
+   
+    <h1 style="font-size: 14px;color: white;text-align: center;    font-family: 'Mukta';">किवां आम्हाला iloveakot@gmail.com पाठवा</h1>
+     </div>
+  </ion-content>

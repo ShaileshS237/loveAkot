@@ -1,0 +1,154 @@
+<ion-header class="ion-no-border" style="color: white; ">
+  <ion-toolbar> 
+    <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-chip slot="end" style="margin: 3px 0px;font-size: 12px;" color="success">
+      <ion-label>Share</ion-label>
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </ion-chip> -->
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+ <div *ngIf="lanugage == 'English'" style="padding: 5px 17px;" class="font2">
+  <div>
+    <h1 style="font-weight:800;font-size: 29px;background: -webkit-linear-gradient( 
+      214deg
+       ,#0037e5, #ff5151);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;">Akot Covid19 Vaccine Slot Finder. </h1>
+        
+          
+  <div>
+          
+              <div *ngFor="let item of covidVacD"  style="margin: 13px 0;
+              background: #0042d6;
+              color: white;margin-bottom: 9px;
+              border-radius: 7px;
+              " >
+              <div style="    padding: 10px 13px 0px;">
+                <h2> Name of Center  : <b>{{item.name}} </b></h2>
+                <h2>  Address of Center : <b>{{item.address}}</b></h2>
+                <h2> Fees : <b>{{item.fee_type}}</b></h2>
+                <h2> Book Your Slot : </h2>
+                <div style="margin: 5px 0;">
+                  <ion-button href="https://www.cowin.gov.in/home" color="success">Cowin</ion-button> &nbsp; <ion-button color="danger" href="https://web.umang.gov.in/landing/">Umang</ion-button>
+                </div>
+                
+              </div>
+               <div style="padding-bottom: 10px;">
+                <ion-slides [options]="slideOpts3">
+                  <ion-slide *ngFor="let item2 of item.sessions" style="  
+                  background: #002880;
+                  /* text-align: left; */
+                  /* width: auto; */
+               
+                  border-radius: 5px;
+                  margin: 10px   ; margin-bottom: 10px;">
+                  
+                    <div style="    padding: 10px;"  >
+                      <h1 style="    margin: 0 5px;"> <b> {{item2.vaccine |uppercase }}</b></h1>
+                      <h2 style="">Available Slots: <b>{{item2.available_capacity}}</b></h2>
+                      <h2>Date : <b>{{item2.date}}</b></h2>
+                      <h2>Age : <b>{{item2.min_age_limit}}+</b></h2>
+                     
+                    </div>
+                  </ion-slide>
+                </ion-slides>
+               </div>
+                  
+               </div>
+          
+        </div> 
+  
+   </div>
+   <div>
+
+    <h2 style="text-align: center;
+   padding: 9px 13px;
+   color: #b2b2b2;padding: 63% 0;" *ngIf="showNothing">
+   No result found. Please try again.
+    </h2>
+   </div>
+   <h2 style="text-align: center;
+   padding: 9px 13px;
+    font-size: 13px;
+   color: #b2b2b2;">The Data is sourced real-time from Co-Win <br> Please use the Co-Win app to book vaccination appointment</h2>
+ </div>
+
+
+ <div *ngIf="lanugage == 'Marathi'" style="font-family: Mukta;padding: 5px 17px;" class="font">
+
+  <div>
+    <h1 style="font-size: 37px;;font-weight:700;background: -webkit-linear-gradient( 
+      214deg
+       ,#0037e5, #ff5151);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;">अकोट कोविड-19 लस स्लॉट फाइंडर </h1>
+
+         
+  <div>
+          
+              <div *ngFor="let item of covidVacD"  style="margin: 13px 0;
+              background: #0042d6;
+              color: white;margin-bottom: 9px;
+              border-radius: 7px;
+              " >
+              <div style="    padding: 10px 13px 0px;">
+                <h2>केंद्राचे नाव : {{item.name}}</h2>
+                <h2> केंद्राचा पत्ता : {{item.address}}</h2>
+                <h2> शुल्क : {{item.fee_type}}</h2>
+                <h2> स्लॉट बुक करा : </h2>
+                <div style="margin: 5px 0;">
+                  <ion-button href="https://www.cowin.gov.in/home" color="success">Cowin</ion-button>
+                  
+                  &nbsp; <ion-button color="danger" href="https://web.umang.gov.in/landing/">Umang</ion-button>
+                </div>
+                
+              </div>
+               <div style="padding-bottom: 10px;">
+                <ion-slides [options]="slideOpts3">
+                  <ion-slide *ngFor="let item2 of item.sessions" style="  
+                  background: #002880;
+                  /* text-align: left; */
+                  /* width: auto; */
+               
+                  border-radius: 5px;
+                  margin: 10px   ; margin-bottom: 10px;">
+                  
+                    <div style="    padding: 10px;"  >
+                      <h1 style="    margin: 0 5px;"> {{item2.vaccine |uppercase }}</h1>
+                      <h2 style="font-size: 21px;">उपलब्ध स्लॉट : {{item2.available_capacity}}</h2>
+                      <h2>तारीख : {{item2.date}}</h2>
+                     
+                      <h2>वय : {{item2.min_age_limit}}+</h2>
+                     
+                    </div>
+                  </ion-slide>
+                </ion-slides>
+               </div>
+                  
+               </div>
+          
+        </div> 
+  
+   </div>
+   <div>
+
+    <h2 style="text-align: center;
+   padding: 9px 13px;
+   color: #b2b2b2;padding: 63% 0;" *ngIf="showNothing"> 
+    काही आढळून आल नाही, थोड्या वेळानी पर्यंत करा.
+    </h2>
+   </div>
+   <h2 style="text-align: center;
+   padding: 9px 13px;
+   color: #b2b2b2;">
+    को-विन वेबसाईट पासून डेटा रीअल टाईमचा स्रोत होत आहे. <br> लसीकरण बुक करण्यासाठी को-विन अ‍ॅप किवां उमंग अ‍ॅप वापरा
+    </h2>
+ </div>
+ 
+</ion-content>
+

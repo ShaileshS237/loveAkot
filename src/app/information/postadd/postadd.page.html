@@ -1,0 +1,138 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="  ">
+    <!-- <ion-title > Details of Event</ion-title> -->
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-button  *ngIf="language == 'English'" #btn slot="end" color="warning" [disabled]="clicked === 1" style="    margin-right: 22px;"
+      (click)="addPost()">Post<ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
+    <ion-button  *ngIf="language == 'Marathi'" #btn slot="end" color="warning" [disabled]="clicked === 1" style="  font-family: 'Mukta';   margin-right: 22px;"
+    (click)="addPost()">पोस्ट करा<ion-icon name="arrow-forward"></ion-icon>
+  </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="language == 'English'">
+    <div class="container"
+    style="border: 1px solid #dfdfdf;     padding: 5px 15px; margin-bottom: 4px;     margin-top: 19px;">
+    <div class="column1">
+      <div class="form-control" style="    margin-bottom: 0;
+               padding-bottom: 0;">
+        <input (click)="noerror()" id="pName" placeholder="Your Name" [(ngModel)]="name"
+          style="   text-transform: capitalize;     font-size: 15px;  border: none;">
+
+      </div>
+
+    </div>
+
+  </div>
+  <h2 *ngIf="error" style="margin: 0px 34px;
+  color: red;
+  font-size: 10px;
+  font-weight: 300;" id="error"> *name required</h2>
+  <div class="container"
+    style="padding: 0; margin: 19px ​26px 0px 26px; min-height: 400px;border: 1px solid #dfdfdf;  ">
+    <div class="column1" style="    padding: 3px 13px;  ">
+      <div class="form-control">
+        <textarea #box (keyup)="0"  (click)="noerror2()" style="    font-size: 15px;
+                " type="message" class="{{class}}" id="password2" placeholder="What's on your Mind?"
+          [(ngModel)]="message"></textarea>
+        <ion-icon *ngIf="this.showClose" name="close-sharp" style="    position: absolute;
+       height: 30px;
+       color: white;
+       width: 37px;
+       left: 84%;
+       background: #ffc409;" (click)="clear()"></ion-icon>
+        <div *ngIf="this.tImage">
+
+          <div style="max-height: 127px; overflow: hidden;border-radius: 6px;">
+            <img src={{this.tImage}} alt="" style="">
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  
+  <!-- <h1 *ngIf="!error2" style="margin: 0px;
+  /* color: white; */
+  float: right;
+  padding: 8px 29px;font-size: 13px;">{{box.value.length}}/400</h1> -->
+  <h1 style="margin: 0px;
+  color: red;
+   float: right;
+   padding: 8px 29px;font-size: 13px;" *ngIf="error2" id="error">* Please Say Something</h1>
+  </div>
+
+
+  <div *ngIf="language == 'Marathi'" class="marathi">
+    <div class="container"
+    style="border: 1px solid #dfdfdf;     padding: 5px 15px; margin-bottom: 4px;     margin-top: 19px;">
+    <div class="column1">
+      <div class="form-control" style="    margin-bottom: 0;
+               padding-bottom: 0;">
+        <input (click)="noerror()" id="pName" placeholder="Your Name" [(ngModel)]="name"
+          style="   text-transform: capitalize;     font-size: 15px;  border: none;">
+
+      </div>
+
+    </div>
+
+  </div>
+  <h2 *ngIf="error" style="margin: 0px 34px;
+  color: red;
+  font-size: 10px;
+  font-weight: 300;" id="error"> *name required</h2>
+  <div class="container"
+    style="padding: 0; margin: 19px ​26px 0px 26px; min-height: 400px;border: 1px solid #dfdfdf;  ">
+    <div class="column1" style="    padding: 3px 13px;  ">
+      <div class="form-control">
+        <textarea #box (keyup)="0"   (click)="noerror2()" style="    font-size: 15px;
+                " type="message" class="{{class}}" id="password2" placeholder="तुमच्या मनात काय आहे?"
+          [(ngModel)]="message"></textarea>
+        <ion-icon *ngIf="this.showClose" name="close-sharp" style="    position: absolute;
+       height: 30px;
+       color: white;
+       width: 37px;
+       left: 84%;
+       background: #ffc409;" (click)="clear()"></ion-icon>
+        <div *ngIf="this.tImage">
+
+          <div style="max-height: 127px; overflow: hidden;border-radius: 6px;">
+            <img src={{this.tImage}} alt="" style="">
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  
+  <!-- <h1 *ngIf="!error2" style="margin: 0px;
+  /* color: white; */
+  float: right;
+  padding: 8px 29px;font-size: 13px;">{{box.value.length}}</h1> -->
+  <h1 style="margin: 0px;
+  color: red;
+   float: right;
+   padding: 8px 29px;font-size: 13px;" *ngIf="error2" id="error">* कृपया काही तरी लिहा.</h1>
+  </div>
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <label for="file-upload" class="custom-file-upload">
+      <ion-icon type="file" name="images-sharp" style="height: 27px;
+    width: 70px;padding: 0 0 0 0;"></ion-icon>
+    </label>
+    
+    <input id="file-upload" type="file" (change)="upload($event)" />
+    <input #myInput id="upload" type="file" placeholder="Choose" name="filename" type="file" (change)="upload($event)"
+      accept="*.png.jpg" id="" ngf-max-size='1000'>
+      
+  </ion-toolbar>
+</ion-footer>

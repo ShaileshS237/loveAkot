@@ -1,0 +1,183 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+.onboard-main{
+    padding: 1% 3%;
+    height: 100%;
+    ion-fab{
+        bottom: 35px;
+    }
+    h4{
+      // font-size: 42px;
+    background: -webkit-linear-gradient( 
+214deg
+ ,#0037e5, #ff5151);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+      font-family: 'Titillium Web', sans-serif; font-weight:700
+    }
+    p{
+      font-family: 'Titillium Web', sans-serif; font-weight:400
+    }
+    .onboard-top{
+        margin-top: 5%;
+        ion-button{
+            text-transform: capitalize;
+            font-size: 0.9rem;
+        }
+    }
+    .onboard-bot{
+        ion-slides{
+            padding-bottom: 22%;
+            --buller-background:rgb(346 24 67/24%);
+        }
+        .omb-img{
+            margin: 9% 0 8%;
+            
+            img{
+               
+                height: 300px;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        h4{
+            font-size:34px;
+            margin-bottom: 1%;
+            margin-top: 24px;
+        }
+        p{
+            font-size: 1rem;
+            padding: 2% 5%;
+        }
+    }
+}
+
+
+
+*::-webkit-scrollbar {
+        display: none;
+    }
+
+    .btn{
+        text-align: center;
+        border-radius: 3px;
+        padding: 8px;
+        border: 1px solid #d9d9d9;
+        text-transform: capitalize;
+        font-size: 15px;
+        width: 87%;
+        color: black;
+        margin: 11px 0;
+    }
+    .btn:hover{
+        // border: 1px solid #e60606;
+        outline: none;
+        border-color: #9ecaed;
+        box-shadow: 0 0 10px #9ecaed;
+    }
+    .btn2{
+        text-align: center;
+        border-radius: 3px;
+        padding: 8px;
+        border: 1px solid #d9d9d9;
+        text-transform: capitalize;
+        font-size: 15px;
+        width: 42%;
+        background: linear-gradient(to left, #FE0176,#CC1FAF);
+        color: white;
+        box-shadow: 0 0 10px #9ecaed;
+        // margin: 20px 0;
+    }
+    .btn3{
+        text-align: center;
+        border-radius: 3px;
+        padding: 8px;
+        border: 1px solid #d9d9d9;
+        text-transform: capitalize;
+        font-size: 15px;
+        width: 87%;
+        color: black;
+        margin: 11px 0;
+        outline: none;
+        border-color: #ff003b7d;
+        box-shadow: 0 0 10px #ff002f82;
+        animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+    @keyframes shake {
+        10%, 90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+        
+        20%, 80% {
+          transform: translate3d(2px, 0, 0);
+        }
+      
+        30%, 50%, 70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+      
+        40%, 60% {
+          transform: translate3d(4px, 0, 0);
+        }
+      }
+  
+    .footer {
+            border-radius: 13px 13px 0 0;
+        padding-top: 3px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #f8faff;
+        color: white;
+        text-align: center;
+        height: 159px;
+        z-index: 10;
+     }
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}

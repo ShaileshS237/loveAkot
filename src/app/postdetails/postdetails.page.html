@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title style="font-size: 15px;" *ngIf="lang == 'English'">{{Name|titlecase}}'s Post</ion-title>
+    <ion-title style="font-size: 15px;" *ngIf="lang == 'Marathi'">{{Name|titlecase}}<span style="font-family: 'Mukta';"> यांची पोस्ट</span></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #F0F2F5;">
+  <div style=" padding: 10px 15px 0;">
+    <!-- <ion-chip outline color="primary" style="margin: 0px;">
+      <ion-label color="primary" >{{Name}}</ion-label>
+    </ion-chip> -->
+   <p style="
+   border-radius: 7px;
+   background: white;
+   font-size: 20px;
+   padding: 14px 14px;
+   white-space: pre-line;    font-family: 'Mukta';
+  
+   " *ngIf="Message!='N.A'">
+    {{Message}}</p>
+  <!-- <h1>{{timeStamp }}</h1> -->
+ 
+  </div>
+<div   *ngIf="Message=='N.A'" style="    padding: 12px;
+background: white;
+border-radius: 3px;
+margin: 10px;">
+  <img src={{image}} alt="">
+</div>
+  
+  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <img src="/assets/icon/logoLarge.png" alt="" style="display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;">
+  
+  </ion-toolbar>
+</ion-footer>

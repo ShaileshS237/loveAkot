@@ -1,0 +1,111 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="text-align: center;--ion-background-color:rgba(14,42,119,1); color: white;">
+    <!-- <ion-title > Details of Event</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-button *ngIf="language == 'English'" (click)="createEvent()" [disabled]="!EventName || !MobNo || !Startdate || !endDate || !openTime || !CloseTime || !address || Disabled  " color="light" slot="end" style="margin-right: 18px;">Add Event <ion-icon name="arrow-forward"></ion-icon></ion-button>
+    <ion-button *ngIf="language == 'Marathi'" (click)="createEvent()" [disabled]="!EventName || !MobNo || !Startdate || !endDate || !openTime || !CloseTime || !address || Disabled  " color="light" slot="end" style="margin-right: 18px;  font-family: 'Mukta';">पुढे जा <ion-icon name="arrow-forward"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="language == 'English'">
+    <div class="container">
+      <div class="column1">
+              <div class="form-control">
+                  <label for='username'>Event Name*</label>
+                  <input id="eventname" style="text-transform:capitalize" placeholder="Enter Name(Only 40 Character)" [(ngModel)]="EventName" [maxlength]="40">
+              </div>
+              <div class="form-control">
+                <label for='username'>Organizer Contact No.*</label>
+                <input id="mobile" placeholder="Enter Mobile" [(ngModel)]="MobNo" Max="10" type="number">
+            </div>
+              <div class="form-control">
+                <label for="dateofbirth">Event Start Date*</label>
+                <input type="date" name="dateofbirth" id="dateofbirth" [(ngModel)]="Startdate">
+            </div>
+            <div class="form-control">
+              <label for="dateofbirth">Event End Date*</label>
+              <input type="date" name="dateofbirth" id="dateofbirth" [(ngModel)]="endDate">
+          </div>
+            <div class="form-control">
+              <label for='email'>Opening Time*</label>
+              <input  id="email" type="time" placeholder="Enter Mobile No." [(ngModel)]="openTime">
+          </div>
+              <div class="form-control">
+                <label for='email'>Closing Time*</label>
+                <input  id="email" placeholder="Enter Mobile No." type="time" [(ngModel)]="CloseTime">
+            </div>
+            <div class="form-control">
+                  <label for='address'>Address of Event*</label>
+                  <input id="password2" placeholder="Enter Address" [(ngModel)]="address">
+              </div>
+             
+              <div class="form-control">
+                <label for='message'>About Event*</label>
+                <textarea type="message" id="password2" placeholder="Say something about event " [(ngModel)]="about"></textarea>
+            </div>
+            <div class="form-control">
+              <label for='message'>Banner Image</label>
+              <input type="file" (change)="upload($event)" accept="*.png.jpg" id="">
+              <h6 style="    font-size: 8px;margin: 4px;">*if no banner image available, Leave Blank</h6>
+          </div>
+              <!-- <button >Add Event</button> -->
+              
+      </div>
+      
+  
+  </div>
+  </div>
+
+  <div *ngIf="language == 'Marathi'" class="Marathi">
+    <div class="container">
+      <div class="column1">
+              <div class="form-control">
+                  <label for='username'>कार्यक्रमाचे नाव*</label>
+                  <input id="eventname" style="text-transform:capitalize" placeholder="कार्यक्रमाचे नाव(केवळ 40 शब्द)" [(ngModel)]="EventName" [maxlength]="40">
+              </div>
+              <div class="form-control">
+                <label for='username'>आयोजकचा संपर्क क्रमांक*</label>
+                <input id="mobile" placeholder="आयोजकचा संपर्क क्रमांक" [(ngModel)]="MobNo" Max="10" type="number">
+            </div>
+              <div class="form-control">
+                <label for="dateofbirth">कार्यक्रम प्रारंभ तारीख*</label>
+                <input type="date" name="dateofbirth" id="dateofbirth" [(ngModel)]="Startdate">
+            </div>
+            <div class="form-control">
+              <label for="dateofbirth">कार्यक्रमाची समाप्ती तारीख*</label>
+              <input type="date" name="dateofbirth" id="dateofbirth" [(ngModel)]="endDate">
+          </div>
+            <div class="form-control">
+              <label for='email'>
+                रोज उघडण्याची वेळ*</label>
+              <input  id="email" type="time"  [(ngModel)]="openTime">
+          </div>
+              <div class="form-control">
+                <label for='email'>रोज बंद होण्याची वेळ*</label>
+                <input  id="email"  type="time" [(ngModel)]="CloseTime">
+            </div>
+            <div class="form-control">
+                  <label for='address'>कार्यक्रमाचा पत्ता*</label>
+                  <input id="password2" placeholder="पत्ता" [(ngModel)]="address">
+              </div>
+             
+              <div class="form-control">
+                <label for='message'>कार्यक्रमाबद्दल*</label>
+                <textarea type="message" id="password2" placeholder="कार्यक्रमाबद्दल काहीतरी सांगा.." [(ngModel)]="about"></textarea>
+            </div>
+            <div class="form-control">
+              <label for='message'>बॅनर प्रतिमा</label>
+              <input type="file" (change)="upload($event)" accept="*.png.jpg" id="">
+              <h6 style="    font-size: 8px;margin: 4px;">*   बॅनर प्रतिमा उपलब्ध नसल्यास रिक्त सोडा</h6>
+          </div>
+              <!-- <button >Add Event</button> -->
+              
+      </div>
+      
+  
+  </div>
+  </div>
+</ion-content>

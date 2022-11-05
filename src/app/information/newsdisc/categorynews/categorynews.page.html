@@ -1,0 +1,80 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <div style="padding: 12px;" *ngFor="let item of first">
+     <div style="height: 134px;
+     overflow: hidden;" (click)="navigate(item.id,item.Title,item.Description,item.image,item.Date,item.count,item.ContName)" >
+       <img src={{item.image}} alt="" style="    border-radius: 9px 9px 0 0;">
+     </div>
+     <div (click)="navigate(item.id,item.Title,item.Description,item.image,item.Date,item.count,item.ContName)" style=" 
+         border-top: 0px;
+    border-radius: 0 0 10px 10px;
+    padding: 9px;
+    border-left: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;">
+      <h2 style="margin: 0;margin: 0;
+      font-size: 12px;
+      font-weight: 300;background: -webkit-linear-gradient( 
+214deg
+ ,#0037e5, #ff5151);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;">
+        {{item.Date | date : 'MMM d, y'}} | {{item.Date | date : 'h:mm a'}}
+      </h2>
+       <h1 style="margin: 3px 0;font-weight: 700;font-size: 18px;line-height: 1.5em;font-family: 'Mukta';
+       height: 3em;       /* height is 2x line-height, so two lines will display */
+       overflow: hidden;">
+        {{item.Title}}
+       </h1>
+      
+       <h2 style="margin: 0;margin: 0;
+       font-size: 12px;font-family: 'Mukta';
+       font-weight: 300;">
+          By: {{ item.ContName | titlecase}}
+       </h2>
+     </div>
+   </div>
+   <div style="     " >
+     <ion-grid *ngFor="let item of todayNews">
+       <ion-row  style=" background: #fafafa;margin: 2px 6px;  border-radius: 7px;padding: 8px;"  (click)="navigate(item.id,item.Title,item.Description,item.image,item.Date,item.count,item.ContName)" >
+         <ion-col size="8" >
+          <h2 style="margin: 0;margin: 0;
+            font-size: 10px;color: #0042d6;
+          font-weight: 300;background: -webkit-linear-gradient( 
+214deg
+ ,#0037e5, #ff5151);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;">
+             {{item.Date | date : 'MMM d, y'}} | {{item.Date | date : 'h:mm a'}}
+          </h2>
+          <h1 style="margin: 3px 0;font-weight: 700;    font-size: 12px;line-height: 1.5em;font-family: 'Mukta';
+          height: 3em;       /* height is 2x line-height, so two lines will display */
+          overflow: hidden;">
+            {{item.Title}}
+          </h1>
+          <h2 style="margin: 0;margin: 0;font-family: 'Mukta';
+          font-size: 10px;
+          font-weight: 300;">
+             By: {{ item.ContName | titlecase}}
+          </h2>
+         </ion-col>
+         <ion-col size="4">
+           <div style="    background: white;
+          height: 50px;
+           overflow: hidden;
+           border-radius: 5px;">
+              <img src={{item.image}} alt="" style="height: 100%;
+              width: 100%;">
+           </div>
+         </ion-col>
+       </ion-row>
+     </ion-grid>
+   </div>
+</ion-content>

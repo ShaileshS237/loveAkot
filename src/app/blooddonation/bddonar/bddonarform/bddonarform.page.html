@@ -1,0 +1,78 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="text-align: center;--ion-background-color:rgba(14,42,119,1); color: white;">
+    <ion-title >Be a Super Hero</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  
+  <div class="container">
+    <div class="column1">
+            <div class="form-control">
+                <label for='username'>Name</label>
+                <input id="username" placeholder="Enter Name" [(ngModel)]="Name" style="text-transform: capitalize;">
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for='email'>Mobile No.</label>
+                <input  id="email" placeholder="Enter Mobile No." [(ngModel)]="MobNo" maxlength="12" type="number">
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for='password'>Select Your Blood Group</label>
+                <select id="cat" name="cat" type="text" [(ngModel)]="Category" >
+                  <option value="A +ve">A +ve</option>
+                  <option value="A -ve">A -ve</option>
+                  <option value="B +ve" >B +ve</option>
+                  <option value="B -ve">B -ve</option>
+                  <option value="AB +ve">AB +ve</option>
+                  <option value="AB -ve" >AB -ve</option>
+                  <option value="O" >O</option>
+                </select>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for='address'>Gender</label>
+                <select id="cat" name="cat" type="text" [(ngModel)]="gender" >
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+              <label for='message' >Mention Any Allergy,Disease (If Any) </label>
+              <textarea style="text-transform: capitalize;" type="message" id="password2" placeholder="Any Allergy,Disease(leave black)" value="No Disease and Allergy" [(ngModel)]="Allergy"></textarea>
+              <small>Error message</small>
+              <!-- <p>
+                <ion-chip outline color="primary">
+                  <ion-label style="    font-size: 10px;">High Blood Presure</ion-label>
+                </ion-chip>
+                <ion-chip outline color="secondary">
+                  <ion-label  style="    font-size: 10px;">High Sugar</ion-label>
+                </ion-chip>
+                <ion-chip outline color="tertiary">
+                  <ion-label  style="    font-size: 10px;">Low Sugar</ion-label>
+                </ion-chip>
+                <ion-chip outline color="success">
+                  <ion-label  style="    font-size: 10px;">Success</ion-label>
+                </ion-chip>
+                <ion-chip outline color="warning">
+                  <ion-label  style="    font-size: 10px;">Warning</ion-label>
+                </ion-chip>
+                <ion-chip outline color="danger">
+                  <ion-label  style="    font-size: 10px;">Danger</ion-label>
+                </ion-chip>
+              </p> -->
+              <h1 style="    margin: 6px 0;    font-size: 10px; color:red">*Leave Blank if dont know</h1>
+          </div>
+            <button (click)="createNews()" [disabled]="!Name || !MobNo || !Category || !gender ">Submit</button>
+            
+    </div>
+    
+
+</div>
+<div class="footer">
+  <h1 style="    margin-top: 10px;
+  margin-bottom: 10px; font-size:11px ;padding: 0px 6px 0px 14px;">Please Note That, Your Age Should 18+ and Weight Should Be 45+ to donate blood</h1>
+</div>
+</ion-content>

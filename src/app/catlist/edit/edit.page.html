@@ -1,0 +1,78 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar style="text-align: center;--ion-background-color:rgba(14,42,119,1); color: white;">
+    <ion-title > Infromation Contribution</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-content>
+      <div class="container">
+        <div class="column1">
+            
+               
+                <div class="form-control">
+                    <label for='username'>Name of Person/Shop*</label>
+                    <input [(ngModel)]="Name" placeholder="Title" style="text-transform: capitalize;" disabled/>
+                    <small>Error message</small>
+                </div>
+               
+                <div class="form-control">
+                  <label for='username'>Mobile of Person/Shop*</label>
+                  <input [(ngModel)]="Mobile" placeholder="Title"/>
+                  <small>Error message</small>
+              </div>
+              <div class="form-control" >
+                <label for='email'>Working Hours</label>
+                <ion-grid fixed class="ion-no-padding">
+                  <ion-row>
+                    <ion-col size="5"><input type="time" placeholder="Enter Mobile No." [(ngModel)]="startTime" (click)="click()"></ion-col>
+                    <ion-col size="2">
+                      <h1 style="    font-size: 14px;    margin: 7px;text-align:center">To</h1>
+                    </ion-col>
+                    <ion-col size="5"><input  placeholder="Enter Mobile No." type="time" [(ngModel)]="endTime" (click)="click()"></ion-col>
+                  </ion-row>
+                </ion-grid>
+                <h1 style="    margin: 0px;
+                color: red;
+                font-size: 10px;
+                margin-top: 6px;" *ngIf="error">*Opening Time Should be less Than Closing </h1>
+                
+            </div>
+            <div class="form-control">
+              <label for='password'>Day off(Holiday)</label>
+              <select id="cat" name="cat" type="text" [(ngModel)]="off" >
+                <option value="Sunday">Sunday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday" >Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday" >Friday</option>
+                <option value="Saturday" >Saturday</option>
+              </select>
+              <small>Error message</small>
+          </div>
+       
+            <div class="form-control">
+              <label for='email'>Address of Person/Place</label>
+              <textarea [(ngModel)]="address" placeholder="Deatiled Description"></textarea> 
+              <small>Error message</small>
+              
+          </div>
+          <div class="form-control">
+            <label for='email'>About Person/Place</label>
+            <textarea [(ngModel)]="about" placeholder="Deatiled Description"></textarea> 
+            <small>Error message</small>
+            
+        </div>
+                <button (click)="update()" [disabled]="!off || !Name || !Mobile || !startTime || !endTime || !address || !about  || Disabled  ">Submit</button>
+                
+        </div>
+        
+    
+    </div>
+   
+ 
+  </ion-content>
+  
